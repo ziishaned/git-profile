@@ -5,6 +5,7 @@ namespace Zeeshan\GitProfile\Commands;
 use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Zeeshan\GitProfile\GitProfile;
 
 class GitProfileCommand extends BaseCommand
 {
@@ -16,6 +17,8 @@ class GitProfileCommand extends BaseCommand
 
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
+		$output->writeln(GitProfile::APPLICATION_NAME . ' version ' . GitProfile::APPLICATION_VERSION);
+		$output->writeln('');
 		$output->writeln('usage:');
 		$output->writeln('  git profile [options] <command>');
 		$output->writeln('');
