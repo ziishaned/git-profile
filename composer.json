@@ -14,7 +14,8 @@
     },
     "autoload": {
     	"psr-4": {
-    		"Zeeshan\\GitProfile\\": "src"
+            "Zeeshan\\GitProfile\\": "src",
+    		"Tests\\": "tests"
     	}
     }
 }
