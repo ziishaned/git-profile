@@ -1,0 +1,19 @@
+{
+    "name": "zeeshan/git-profile",
+    "description": "Change git profile on the go",
+    "authors": [
+        {
+            "name": "Zeeshan Ahmed",
+            "email": "ziishaned@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "^3.1",
+        "symfony/process": "^3.1"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"Zeeshan\\GitProfile\\": "src"
+    	}
+    }
+}
