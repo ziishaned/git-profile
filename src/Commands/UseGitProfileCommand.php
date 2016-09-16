@@ -12,7 +12,7 @@ class UseGitProfileCommand extends BaseCommand
 {
 	public function configure()
 	{
-		$this->setName('change')
+		$this->setName('use')
 			 ->setDescription('Change git profile locally or globally.')	
 			 ->addArgument('profile-title', InputArgument::REQUIRED, 'Git progile title.')
 			 ->addOption('global', null, InputOption::VALUE_NONE, 'Set git profile global.');	
