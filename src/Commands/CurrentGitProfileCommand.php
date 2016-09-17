@@ -5,7 +5,6 @@ namespace Zeeshan\GitProfile\Commands;
 use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
