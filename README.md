@@ -44,12 +44,12 @@ $ git profile [options] <command>
 ```
 *Command*
 ```
-current                 Gets the currently set profile
+rm                      Remove git profile
+use                     Change git profile locally or globally
+add                     Create a new git profile
 show 					Show details for an existing profile
 update 					Update details for an existing profile
-rm                      Remove git profile
-add                     Create a new git profile
-use                     Change git profile locally or globally
+current                 Gets the currently set profile
 ```
 
 
