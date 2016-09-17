@@ -35,6 +35,13 @@ class BaseCommand extends Command
 		}
 	}
 
+	/**
+	 * Switch git profile
+	 * 
+	 * @param  string $profileTitle
+	 * @param  string $flag
+	 * @return mixed
+	 */
 	public function switchProfile($profileTitle, $flag = null)
 	{
 		if (!is_null($flag)) {
@@ -42,9 +49,15 @@ class BaseCommand extends Command
 			return $this;
 		}
 
-		$this->runCommand('git config current-profile.name ' . $profileTitle);	
+		return $this->runCommand('git config current-profile.name ' . $profileTitle);	
 	}	
 
+	/**
+	 * Reterive current git profile
+	 * 
+	 * @param  string $flag
+	 * @return mixed
+	 */
 	public function reteriveCurrentProfile($flag = null)
 	{
 		if(!is_null($flag)) {
