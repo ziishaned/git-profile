@@ -59,11 +59,12 @@ Find some of the sample usages below
 ```
 $ git profile add
 
-[+] Title for profile: Office
+[+] Enter profile title: Office
+
 [+] Enter Name:  John Doe
 [+] Enter Email: johndoe@office.com
 
-[OK] Profile saved successfuly
+[OK] Profile "Office" saved successfully
 ```
 
 ### Remove Git Profile
