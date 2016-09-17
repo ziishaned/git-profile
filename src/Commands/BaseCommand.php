@@ -33,5 +33,24 @@ class BaseCommand extends Command
 
 			return '';
 		}
+	}
+
+	public function switchProfile($profileTitle, $flag = null)
+	{
+		if (!is_null($flag)) {
+			$this->runCommand('git config --global current-profile.name ' . $profileTitle);
+			return $this;
+		}
+
+		$this->runCommand('git config current-profile.name ' . $profileTitle);	
 	}	
+
+	public function reteriveCurrentProfile($flag = null)
+	{
+		if(!is_null($flag)) {
+			return $this->runCommand('git config --global current-profile.name');
+		}
+
+		return $this->runCommand('git config current-profile.name');
+	}
 }
