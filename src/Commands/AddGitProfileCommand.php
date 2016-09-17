@@ -4,6 +4,7 @@ namespace Zeeshan\GitProfile\Commands;
 
 use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -47,16 +48,18 @@ class AddGitProfileCommand extends BaseCommand
 	{
 		$this->input  =  $input;
 		$this->output =  $output;
+		$style = new SymfonyStyle($input, $output);
 
-		$profileTitle =  $this->askQuestion("[+] Enter profile title: ", true, 'Git profile name is required.');
 		$output->writeln('');
-		$username 	 =  $this->askQuestion("[+] Enter git user.name: ", true, 'Git user.name is required.');
-		$useremail 	 =  $this->askQuestion("[+] Enter git user.email: ", true, 'Git user.email is required.');
+		$profileTitle =  $this->askQuestion("[+] Enter profile Title: ", true, 'Profile Title is required.');
+		$output->writeln('');
+		$username 	 =  $this->askQuestion("[+] Enter Name: ", true, 'Name is required.');
+		$useremail 	 =  $this->askQuestion("[+] Enter Email: ", true, 'Email is required.');
+		$output->writeln('');
 
 
 		if ($this->saveProfile($profileTitle, $username, $useremail)) {
-			$output->writeln('');
-			$output->writeln('<info>Git profile ' . $profileTitle . ' successfully saved.</info>');
+			$style->success('Profile "' . $profileTitle . '" saved successfuly');
 		}
 	}
 
@@ -74,10 +77,12 @@ class AddGitProfileCommand extends BaseCommand
 		$output = $this->output;
 
 		$question = new Question($question);
-		$question->setValidator(function ($value) use ($output, $message) {
+		$style = new SymfonyStyle($this->input, $this->output);
+
+		$question->setValidator(function ($value) use ($output, $message, $style) {
 	        
 	        if (empty($value)) {
-	        	$output->write('<info>' . $message . '</info>');
+	        	$style->error($message);
 	        	exit(1);
 	        }
 
