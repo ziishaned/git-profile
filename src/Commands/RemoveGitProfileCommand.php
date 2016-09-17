@@ -3,12 +3,22 @@
 namespace Zeeshan\GitProfile\Commands;
 
 use Zeeshan\GitProfile\Commands\BaseCommand;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
 
+/**
+ * @package GitProfile
+ * @author  Zeeshan Ahmed<ziishaned@gmail.com>
+ */
 class RemoveGitProfileCommand extends BaseCommand
 {
+
+	/**
+	 * Configure the command
+	 * 
+	 * @return void
+	 */
 	public function configure()
 	{
 		$this->setName('rm')
@@ -16,6 +26,13 @@ class RemoveGitProfileCommand extends BaseCommand
 			 ->addArgument('profile-title', InputArgument::REQUIRED, 'Your profile title e.g personal or office');
 	}
 
+	/**
+	 * Execute the command
+	 * 
+	 * @param  Symfony\Component\Console\Input\InputInterface  $input  
+	 * @param  Symfony\Component\Console\Output\OutputInterface $output 
+	 * @return void                  
+	 */
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
 		$profileTitle = $input->getArgument('profile-title');
@@ -30,6 +47,12 @@ class RemoveGitProfileCommand extends BaseCommand
 
 	}
 
+	/**
+	 * Remove git profile
+	 * 
+	 * @param  string $profileTitle
+	 * @return boolean
+	 */
 	public function removeProfile($profileTitle)
 	{
 		$mustRun = true;
@@ -38,6 +61,12 @@ class RemoveGitProfileCommand extends BaseCommand
 		return true;
 	}
 
+	/**
+	 * Check wether or not git profile exist
+	 * 
+	 * @param  string $profileTitle
+	 * @return boolean
+	 */
 	public function doesProfileExists($profileTitle)
 	{
 		$commandOutput = $this->runCommand('git config -l --name-only');

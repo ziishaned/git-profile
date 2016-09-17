@@ -3,23 +3,46 @@
 namespace Zeeshan\GitProfile\Commands;
 
 use Zeeshan\GitProfile\Commands\BaseCommand;
+use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Question\Question;
 
+/**
+ * @package GitProfile
+ * @author  Zeeshan Ahmed<ziishaned@gmail.com>
+ */
 class AddGitProfileCommand extends BaseCommand
 {
 
+	/**
+	 * @var Symfony\Component\Console\Input\InputInterface
+	 */
 	protected $input;
+
+	/**
+	 * @var Symfony\Component\Console\Output\OutputInterface
+	 */
 	protected $output;
 
+	/**
+	 * Configure the command
+	 * 
+	 * @return void
+	 */
 	public function configure()
 	{
 		$this->setName('add')
 			 ->setDescription('Create new git profile.');
 	}
 
+	/**
+	 * Execute the command
+	 * 
+	 * @param  Symfony\Component\Console\Input\InputInterface  $input  
+	 * @param  Symfony\Component\Console\Output\OutputInterface $output 
+	 * @return void                  
+	 */
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
 		$this->input  =  $input;
@@ -37,6 +60,14 @@ class AddGitProfileCommand extends BaseCommand
 		}
 	}
 
+	/**
+	 * On CLI ask quesion to user.
+	 * 
+	 * @param  string  $question
+	 * @param  boolean $required
+	 * @param  string  $message
+	 * @return mixed
+	 */
 	public function askQuestion($question, $required = false, $message)
 	{
 		$helper = $this->getHelper('question');
@@ -56,6 +87,14 @@ class AddGitProfileCommand extends BaseCommand
 	    return $helper->ask($this->input, $this->output, $question);
 	}
 
+	/**
+	 * Save git profile
+	 * 
+	 * @param  string $profileTitle
+	 * @param  string $username
+	 * @param  string $useremail
+	 * @return boolean
+	 */
 	public function saveProfile($profileTitle, $username, $useremail)
 	{
 		$mustRun = true;

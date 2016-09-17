@@ -2,19 +2,35 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
+use Zeeshan\GitProfile\GitProfile;
 use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Zeeshan\GitProfile\GitProfile;
 
+/**
+ * @package GitProfile
+ * @author  Zeeshan Ahmed<ziishaned@gmail.com>
+ */
 class GitProfileCommand extends BaseCommand
 {
+	/**
+	 * Configure the command
+	 * 
+	 * @return void
+	 */
 	public function configure()
 	{
 		$this->setName('gitprofile')
 			 ->setDescription('Change git profile on the go.');
 	}
 
+	/**
+	 * Execute the command
+	 * 
+	 * @param  Symfony\Component\Console\Input\InputInterface  $input  
+	 * @param  Symfony\Component\Console\Output\OutputInterface $output 
+	 * @return void                  
+	 */
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
 		$output->writeln(GitProfile::APPLICATION_NAME . ' version ' . GitProfile::APPLICATION_VERSION);
