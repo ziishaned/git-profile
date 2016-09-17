@@ -9,6 +9,7 @@ use Zeeshan\GitProfile\Commands\UseGitProfileCommand;
 use Zeeshan\GitProfile\Commands\ShowGitProfileCommand;
 use Zeeshan\GitProfile\Commands\RemoveGitProfileCommand;
 use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
+use Zeeshan\GitProfile\Commands\CurrentGitProfileCommand;
 // use Zeeshan\GitProfile\Commands\ListGitProfilesCommand;
 
 /**
@@ -41,6 +42,7 @@ class GitProfile
 		$this->commands[] = new RemoveGitProfileCommand();
 		$this->commands[] = new ShowGitProfileCommand();
 		$this->commands[] = new UpdateGitProfileCommand();
+		$this->commands[] = new CurrentGitProfileCommand();
 		// $this->commands[] = new ListGitProfilesCommand();
 	}
 
