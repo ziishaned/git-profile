@@ -47,7 +47,8 @@ class GitProfileCommand extends BaseCommand
 		$output->writeln('');
 		$output->writeln('Available commands:');
 		$output->writeln('  show               	  Get the profile detail');
-		$output->writeln('  current               Get the current profile');
+		$output->writeln('  current                 Get the current profile');
+		$output->writeln('  update                  Update git profile');
 		$output->writeln('  rm               	  Remove git profile');
 		$output->writeln('  add              	  Create a new git profile');
 		$output->writeln('  use              	  Change git profile locally or globally');
