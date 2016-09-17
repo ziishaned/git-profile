@@ -39,15 +39,19 @@ class GitProfileCommand extends BaseCommand
 		$output->writeln('usage:');
 		$output->writeln('  git profile [options] <command>');
 		$output->writeln('');
-		$output->writeln('Commands:');
-		$output->writeln('  rm               Remove git profile');
-		$output->writeln('  add              Create a new git profile');
-		// $output->writeln('  list             Display all git profiles');
-		$output->writeln('  use              Change git profile locally or globally');
+		$output->writeln('Options');
+		$output->writeln('  -h, --help              Display this help message');
+		$output->writeln('  -V, --version           Display this application version');
+		$output->writeln('  --ansi            	  Force ANSI output');
+		$output->writeln('  --no-ansi         	  Disable ANSI output');
 		$output->writeln('');
-		$output->writeln('Options:');
-		$output->writeln('  -h, --help       Display this help message');
-		$output->writeln('  -V, --version    Display this application version');
+		$output->writeln('Available commands:');
+		$output->writeln('  show               	  Get the profile detail');
+		$output->writeln('  current               Get the current profile');
+		$output->writeln('  rm               	  Remove git profile');
+		$output->writeln('  add              	  Create a new git profile');
+		$output->writeln('  use              	  Change git profile locally or globally');
 		$output->writeln('');
+
 	}	
 }
