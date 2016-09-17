@@ -1,6 +1,6 @@
 # git-profile
 
-> Utility that helps you switch git configurations with ease
+> :octocat: Utility that helps you switch git configurations with ease
 
 ## Preface
 
