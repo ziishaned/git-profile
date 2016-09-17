@@ -58,21 +58,4 @@ class CurrentGitProfileCommand extends BaseCommand
 
 		$style->error('Something went wrong.');
 	}
-
-	/**
-	 * Check wether or not git profile exist
-	 * 
-	 * @param  string $profileTitle
-	 * @return boolean
-	 */
-	public function doesProfileExists($profileTitle)
-	{
-		$commandOutput = $this->runCommand('git config -l --name-only');
-
-		if (stripos($commandOutput, "profile." . $profileTitle)) {
-			return true;
-		}		
-		
-		return false;
-	}
 }

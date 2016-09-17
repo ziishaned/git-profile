@@ -62,21 +62,4 @@ class RemoveGitProfileCommand extends BaseCommand
 
 		return true;
 	}
-
-	/**
-	 * Check wether or not git profile exist
-	 * 
-	 * @param  string $profileTitle
-	 * @return boolean
-	 */
-	public function doesProfileExists($profileTitle)
-	{
-		$commandOutput = $this->runCommand('git config -l --name-only');
-
-		if (stripos($commandOutput, "profile." . $profileTitle)) {
-			return true;
-		}		
-		
-		return false;
-	}
 }

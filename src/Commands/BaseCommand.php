@@ -66,4 +66,21 @@ class BaseCommand extends Command
 
 		return $this->runCommand('git config current-profile.name');
 	}
+
+	/**
+	 * Check wether or not git profile exist
+	 * 
+	 * @param  string $profileTitle
+	 * @return boolean
+	 */
+	public function doesProfileExists($profileTitle)
+	{
+		$commandOutput = $this->runCommand('git config -l --name-only');
+
+		if (stripos($commandOutput, "profile." . $profileTitle)) {
+			return true;
+		}		
+		
+		return false;
+	}
 }
