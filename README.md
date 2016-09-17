@@ -28,6 +28,8 @@ This utility aims to make this hassle free.
 
 This utility helps you save profiles and then you can switch between them using a single command.
 
+## Install
+
 ## Usage
 
 ```
@@ -126,3 +128,7 @@ $ git profile current
 git config user.name "Name for specified profile"
 git config user.email "email-for-specified@profile.com"
 ```
+
+## License
+
+MIT © Zeeshan Ahmed
