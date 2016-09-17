@@ -4,6 +4,7 @@ namespace Zeeshan\GitProfile\Commands;
 
 use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,15 +37,48 @@ class UseGitProfileCommand extends BaseCommand
 	 */
 	public function execute(InputInterface $input, OutputInterface $output)
 	{ 
-		$profileTitle = $input->getArgument('profile-title');
-
-		$useremail = $this->runCommand(sprintf('git config --global profile.%s.email', $profileTitle));
-		$username = $this->runCommand(sprintf('git config --global profile.%s.name', $profileTitle));
-
 		$mustRun = true;
-		$this->runCommand(sprintf('git config --global user.name "%s"', $username), $mustRun);
-		$this->runCommand(sprintf('git config --global user.email "%s"', $useremail), $mustRun);
+		$style = new SymfonyStyle($input, $output);
+		$profileTitle = $input->getArgument('profile-title');
+		
+		if(!$this->doesProfileExists($profileTitle)) {
+			$style->error('Profile "' . $profileTitle . '" not exists.');
+			exit(1);
+		}
 
-		$output->writeln('Git profile successfully changed.');
+		$email =  $this->runCommand(sprintf('git config --global profile.%s.email', $profileTitle));
+		$name  =  $this->runCommand(sprintf('git config --global profile.%s.name', $profileTitle));
+
+		if ($input->getOption('global')) {
+			$this->runCommand(sprintf('git config --global user.name "%s"', $name), $mustRun);
+			$this->runCommand(sprintf('git config --global user.email "%s"', $email), $mustRun);
+			
+			$output->writeln('');
+			$style->success('Switched to "' . $profileTitle . '"');
+			exit(1);
+		}
+
+		$this->runCommand(sprintf('git config user.name "%s"', $name), $mustRun);
+		$this->runCommand(sprintf('git config user.email "%s"', $email), $mustRun);
+
+		$output->writeln('');
+		$style->success('Switched to "' . $profileTitle . '"');
+	}
+
+	/**
+	 * Check wether or not git profile exist
+	 * 
+	 * @param  string $profileTitle
+	 * @return boolean
+	 */
+	public function doesProfileExists($profileTitle)
+	{
+		$commandOutput = $this->runCommand('git config -l --name-only');
+
+		if (stripos($commandOutput, "profile." . $profileTitle)) {
+			return true;
+		}		
+		
+		return false;
 	}
 }
