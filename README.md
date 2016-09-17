@@ -91,7 +91,7 @@ $ git profile update "Office"
 [+] Enter Name:  Jane Doe
 [+] Enter Email: janedoe@gmail.com
 
-[OK] Profile updated successfully
+[OK] Profile "Office" updated successfully
 ```
 
 ### Switching Profile
