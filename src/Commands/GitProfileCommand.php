@@ -34,7 +34,7 @@ class GitProfileCommand extends BaseCommand
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
 		$output->writeln('');
-		$output->writeln(GitProfile::APPLICATION_NAME . ' version ' . GitProfile::APPLICATION_VERSION);
+		$output->writeln(GitProfile::APPLICATION_NAME . ' version ' . GitProfile::APPLICATION_VERSION . ' by Zeeshan Ahmed');
 		$output->writeln('');
 		$output->writeln('usage:');
 		$output->writeln('  git profile [options] <command>');
