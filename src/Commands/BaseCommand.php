@@ -46,10 +46,11 @@ class BaseCommand extends Command
 	{
 		if (!is_null($flag)) {
 			$this->runCommand('git config --global current-profile.name ' . $profileTitle);
-			return $this;
+			return true;
 		}
 
-		return $this->runCommand('git config current-profile.name ' . $profileTitle);	
+		$this->runCommand('git config current-profile.name ' . $profileTitle);	
+		return true;
 	}	
 
 	/**
