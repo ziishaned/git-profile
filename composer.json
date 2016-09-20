@@ -1,11 +1,15 @@
 {
     "name": "zeeshan/git-profile",
     "description": "Change git profile on the go",
+    "license": "MIT",
     "authors": [
         {
             "name": "Zeeshan Ahmed",
             "email": "ziishaned@gmail.com"
         }
+    ],
+    "keywords": [
+        "git"
     ],
     "require": {
         "symfony/console": "^3.1",
