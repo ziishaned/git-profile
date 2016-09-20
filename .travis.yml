@@ -16,7 +16,9 @@ matrix:
 before_script:
   - composer install
 
-script: phpunit
+script:
+  - ./vendor/bin/phpunit
+  - ./vendor/bin/phpcs --standard=PSR2 src
 
 notifications:
     on_success: never
