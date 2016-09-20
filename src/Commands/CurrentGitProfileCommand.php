@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -15,47 +15,47 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CurrentGitProfileCommand extends BaseCommand
 {
 
-	/**
-	 * Configure the command
-	 * 
-	 * @return void
-	 */
-	public function configure()
-	{
-		$this->setName('current')
-			 ->setDescription('Get the current profile.')
-			 ->addOption('global', null, InputOption::VALUE_NONE, 'Set git profile global.');
-	}
+    /**
+     * Configure the command
+     *
+     * @return void
+     */
+    public function configure()
+    {
+        $this->setName('current')
+             ->setDescription('Get the current profile.')
+             ->addOption('global', null, InputOption::VALUE_NONE, 'Set git profile global.');
+    }
 
-	/**
-	 * Execute the command
-	 * 
-	 * @param  Symfony\Component\Console\Input\InputInterface  $input  
-	 * @param  Symfony\Component\Console\Output\OutputInterface $output 
-	 * @return void                  
-	 */
-	public function execute(InputInterface $input, OutputInterface $output)
-	{
+    /**
+     * Execute the command
+     *
+     * @param  Symfony\Component\Console\Input\InputInterface  $input
+     * @param  Symfony\Component\Console\Output\OutputInterface $output
+     * @return void
+     */
+    public function execute(InputInterface $input, OutputInterface $output)
+    {
 
-		$style = new SymfonyStyle($input, $output);
-		
-		if ($input->getOption('global')) {
-			$currentProfile = $this->reteriveCurrentProfile('global');
-		}
+        $style = new SymfonyStyle($input, $output);
 
-		$currentProfile = $this->reteriveCurrentProfile();
+        if ($input->getOption('global')) {
+            $currentProfile = $this->reteriveCurrentProfile('global');
+        }
 
-		if ($this->doesProfileExists($currentProfile)) {
-			$email =  $this->runCommand(sprintf('git config --global profile.%s.email', $currentProfile));
-			$name  =  $this->runCommand(sprintf('git config --global profile.%s.name', $currentProfile));
+        $currentProfile = $this->reteriveCurrentProfile();
 
-			$output->writeln('');
-			$output->writeln('[+] Current Profile: ' . $currentProfile);
-			$output->writeln('[+] Name: ' . $name);
-			$output->writeln('[+] Email: ' . $email);
-			exit(1);
-		}
+        if ($this->doesProfileExists($currentProfile)) {
+            $email =  $this->runCommand(sprintf('git config --global profile.%s.email', $currentProfile));
+            $name  =  $this->runCommand(sprintf('git config --global profile.%s.name', $currentProfile));
 
-		$style->error('Something went wrong.');
-	}
+            $output->writeln('');
+            $output->writeln('[+] Current Profile: ' . $currentProfile);
+            $output->writeln('[+] Name: ' . $name);
+            $output->writeln('[+] Email: ' . $email);
+            exit(1);
+        }
+
+        $style->error('Something went wrong.');
+    }
 }

@@ -9,31 +9,31 @@ use Zeeshan\GitProfile\Commands\AddGitProfileCommand;
 
 class BaseCommandTest extends \PHPUnit_Framework_TestCase
 {
-	private $command;
+    private $command;
 
-	public function setUp()
-	{
-		$this->command = new BaseCommand('optional-arg'); 
+    public function setUp()
+    {
+        $this->command = new BaseCommand('optional-arg');
     (new AddGitProfileCommand)->saveProfile('Personal', 'John Doe', 'johndoe@gmail.com');
-	}
+    }
 
     public function testMustRunCommandReturnsOutputForValidCommand()
     {
-    	$mustRun = true;
-    	$expectedOutput = 'test output';
+        $mustRun = true;
+        $expectedOutput = 'test output';
 
-    	$result = $this->command->runCommand(sprintf('echo %s', $expectedOutput), $mustRun);
-    	$this->assertEquals($expectedOutput, $result);
+        $result = $this->command->runCommand(sprintf('echo %s', $expectedOutput), $mustRun);
+        $this->assertEquals($expectedOutput, $result);
     }
 
-	/**
-	 * @expectedException \Exception
-	 */
+    /**
+     * @expectedException \Exception
+     */
    public function testMustRunCommandFailsForInvalidCommand() 
    {
-    	$mustRun = true;
+        $mustRun = true;
 
-    	$this->command->runCommand('Invalid Command', $mustRun);
+        $this->command->runCommand('Invalid Command', $mustRun);
    }
 
    public function testSwitchProfileGlobalIfFlagIsGlobal()

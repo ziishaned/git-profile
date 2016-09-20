@@ -10,30 +10,30 @@ use Zeeshan\GitProfile\Commands\RemoveGitProfileCommand;
 
 class RemoveGitProfileCommandTest extends \PHPUnit_Framework_TestCase
 {
-	private $command;
+    private $command;
 
-	protected function setUp()
+    protected function setUp()
     {
         $this->command = new RemoveGitProfileCommand();
-    	(new AddGitProfileCommand)->saveProfile('Personal', 'Zeeshan Ahmed', 'ziishaned@gmail.com');
+        (new AddGitProfileCommand)->saveProfile('Personal', 'Zeeshan Ahmed', 'ziishaned@gmail.com');
     }
 
     public function testRemoveProfileShouldRemoveGitProfile()
     {
-    	$result = $this->command->removeProfile('Personal');
-    	$this->assertTrue($result);
+        $result = $this->command->removeProfile('Personal');
+        $this->assertTrue($result);
     }
 
     public function testDoesProfileExistsMustReturnFalseIfProfileNotExists()
     {
-    	$result = $this->command->doesProfileExists('xyz');
-    	$this->assertFalse($result);
+        $result = $this->command->doesProfileExists('xyz');
+        $this->assertFalse($result);
     }
 
     public function testDoesProfileExistsMustReturnTrueIfProfileExists()
     {
-    	$this->setUp();
-    	$result = $this->command->doesProfileExists('Personal');
-    	$this->assertTrue($result);
+        $this->setUp();
+        $result = $this->command->doesProfileExists('Personal');
+        $this->assertTrue($result);
     }
 }
