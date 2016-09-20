@@ -8,25 +8,25 @@ use Symfony\Component\Console\Application;
 
 class GitProfileTest extends \PHPUnit_Framework_TestCase
 {
-	private $app;
+    private $app;
 
-	protected function setUp()
+    protected function setUp()
     {
         $this->app = new Application('test', false);
         $this->app->setAutoExit(false);
     }
 
-	public function testGetCommandsShouldReturnArray()
-	{
-		$gitprofile = new GitProfile();
-		$this->assertNotEmpty($gitprofile->getCommands());
-	}
+    public function testGetCommandsShouldReturnArray()
+    {
+        $gitprofile = new GitProfile();
+        $this->assertNotEmpty($gitprofile->getCommands());
+    }
 
-	public function testCanRunProfileBaseCommand()
-	{
-		$process = new Process('php git-profile');
-		$process->run();
+    public function testCanRunProfileBaseCommand()
+    {
+        $process = new Process('php git-profile');
+        $process->run();
 
-		$this->assertEquals(0, $process->getExitCode());
-	}
+        $this->assertEquals(0, $process->getExitCode());
+    }
 }

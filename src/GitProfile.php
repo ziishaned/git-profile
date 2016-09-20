@@ -19,52 +19,52 @@ use Zeeshan\GitProfile\Commands\CurrentGitProfileCommand;
 class GitProfile
 {
 
-	/**
-	 * @var array
-	 */
-	protected $commands = [];
-	
-	/**
-	 * @var string
-	 */
-	CONST APPLICATION_NAME = 'Git Profile';
-	
-	/**
-	 * @var  string
-	 */
-	CONST APPLICATION_VERSION = '1.0';
+    /**
+     * @var array
+     */
+    protected $commands = [];
 
-	public function __construct()
-	{
-		$this->commands[] = new GitProfileCommand();
-		$this->commands[] = new AddGitProfileCommand();
-		$this->commands[] = new UseGitProfileCommand();
-		$this->commands[] = new RemoveGitProfileCommand();
-		$this->commands[] = new ShowGitProfileCommand();
-		$this->commands[] = new UpdateGitProfileCommand();
-		$this->commands[] = new CurrentGitProfileCommand();
-		// $this->commands[] = new ListGitProfilesCommand();
-	}
+    /**
+     * @var string
+     */
+    CONST APPLICATION_NAME = 'Git Profile';
 
-	/**
-	 * @return array
-	 */
-	public function getCommands()
-	{
-		return $this->commands;
-	}
+    /**
+     * @var  string
+     */
+    CONST APPLICATION_VERSION = '1.0';
 
-	/**
-	 * The function from where whole fun begins.
-	 * 
-	 * @return void
-	 */
-	public function runApplication()
-	{
-		$application = new Application(self::APPLICATION_NAME, self::APPLICATION_VERSION);
-		$application->setDefaultCommand('gitprofile');
-		$application->addCommands($this->getCommands());
+    public function __construct()
+    {
+        $this->commands[] = new GitProfileCommand();
+        $this->commands[] = new AddGitProfileCommand();
+        $this->commands[] = new UseGitProfileCommand();
+        $this->commands[] = new RemoveGitProfileCommand();
+        $this->commands[] = new ShowGitProfileCommand();
+        $this->commands[] = new UpdateGitProfileCommand();
+        $this->commands[] = new CurrentGitProfileCommand();
+        // $this->commands[] = new ListGitProfilesCommand();
+    }
 
-		$application->run();
-	}
+    /**
+     * @return array
+     */
+    public function getCommands()
+    {
+        return $this->commands;
+    }
+
+    /**
+     * The function from where whole fun begins.
+     *
+     * @return void
+     */
+    public function runApplication()
+    {
+        $application = new Application(self::APPLICATION_NAME, self::APPLICATION_VERSION);
+        $application->setDefaultCommand('gitprofile');
+        $application->addCommands($this->getCommands());
+
+        $application->run();
+    }
 }
