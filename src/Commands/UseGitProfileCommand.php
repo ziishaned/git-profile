@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -41,7 +41,7 @@ class UseGitProfileCommand extends BaseCommand
         $style = new SymfonyStyle($input, $output);
         $profileTitle = $input->getArgument('profile-title');
 
-        if(!$this->doesProfileExists($profileTitle)) {
+        if (!$this->doesProfileExists($profileTitle)) {
             $style->error('Profile "' . $profileTitle . '" not exists.');
             exit(1);
         }

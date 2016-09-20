@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -40,7 +40,7 @@ class ShowGitProfileCommand extends BaseCommand
         $style = new SymfonyStyle($input, $output);
         $profileTitle = $input->getArgument('profile-title');
 
-        if($this->doesProfileExists($profileTitle)) {
+        if ($this->doesProfileExists($profileTitle)) {
             $profileInfo = $this->getProfile($profileTitle);
 
             $output->writeln('');
@@ -50,7 +50,6 @@ class ShowGitProfileCommand extends BaseCommand
         };
 
         $style->error('Profile "' . $profileTitle . '" not exists.');
-
     }
 
     /**

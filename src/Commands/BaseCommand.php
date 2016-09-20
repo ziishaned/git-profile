@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -61,7 +61,7 @@ class BaseCommand extends Command
      */
     public function reteriveCurrentProfile($flag = null)
     {
-        if(!is_null($flag)) {
+        if (!is_null($flag)) {
             return $this->runCommand('git config --global current-profile.name');
         }
 

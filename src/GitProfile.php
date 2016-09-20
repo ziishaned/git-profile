@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile;
 
@@ -10,6 +10,7 @@ use Zeeshan\GitProfile\Commands\ShowGitProfileCommand;
 use Zeeshan\GitProfile\Commands\RemoveGitProfileCommand;
 use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
 use Zeeshan\GitProfile\Commands\CurrentGitProfileCommand;
+
 // use Zeeshan\GitProfile\Commands\ListGitProfilesCommand;
 
 /**
@@ -27,12 +28,12 @@ class GitProfile
     /**
      * @var string
      */
-    CONST APPLICATION_NAME = 'Git Profile';
+    const APPLICATION_NAME = 'Git Profile';
 
     /**
      * @var  string
      */
-    CONST APPLICATION_VERSION = '1.0';
+    const APPLICATION_VERSION = '1.0';
 
     public function __construct()
     {

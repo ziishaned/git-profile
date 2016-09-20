@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -53,6 +53,5 @@ class GitProfileCommand extends BaseCommand
         $output->writeln('  update                  Update git profile');
         $output->writeln('  current                 Get the current profile');
         $output->writeln('');
-
     }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -40,13 +40,12 @@ class RemoveGitProfileCommand extends BaseCommand
         $style = new SymfonyStyle($input, $output);
         $profileTitle = $input->getArgument('profile-title');
 
-        if($this->doesProfileExists($profileTitle) && $this->removeProfile($profileTitle)) {
+        if ($this->doesProfileExists($profileTitle) && $this->removeProfile($profileTitle)) {
             $style->success('Profile "' . $profileTitle . '" successfully removed.');
             exit(1);
         };
 
         $style->error('Profile "' . $profileTitle . '" not exists.');
-
     }
 
     /**

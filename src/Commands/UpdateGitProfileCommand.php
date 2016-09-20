@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Zeeshan\GitProfile\Commands;
 
@@ -52,7 +52,7 @@ class UpdateGitProfileCommand extends BaseCommand
         $output->writeln('');
 
         $profileTitle =  $this->askQuestion("[+] Enter profile Title: ", true, 'Profile Title is required.');
-        if(!$this->doesProfileExists($profileTitle)) {
+        if (!$this->doesProfileExists($profileTitle)) {
             $style->error('Profile "' . $profileTitle . '" not exists.');
             exit(1);
         }
@@ -65,7 +65,6 @@ class UpdateGitProfileCommand extends BaseCommand
         if ($this->updateProfile($profileTitle, $username, $useremail)) {
             $style->success('Profile "' . $profileTitle . '" updated successfuly');
         }
-
     }
 
     /**
