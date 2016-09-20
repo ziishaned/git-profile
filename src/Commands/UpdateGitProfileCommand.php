@@ -51,15 +51,15 @@ class UpdateGitProfileCommand extends BaseCommand
 
         $output->writeln('');
 
-        $profileTitle =  $this->askQuestion("[+] Enter profile Title: ", true, 'Profile Title is required.');
+        $profileTitle =  $this->askQuestion("[+] Enter profile Title: ", 'Profile Title is required.');
         if (!$this->doesProfileExists($profileTitle)) {
             $style->error('Profile "' . $profileTitle . '" not exists.');
             exit(1);
         }
 
         $output->writeln('');
-        $username      =  $this->askQuestion("[+] Enter Name: ", true, 'Name is required.');
-        $useremail      =  $this->askQuestion("[+] Enter Email: ", true, 'Email is required.');
+        $username      =  $this->askQuestion("[+] Enter Name: ", 'Name is required.');
+        $useremail      =  $this->askQuestion("[+] Enter Email: ", 'Email is required.');
         $output->writeln('');
 
         if ($this->updateProfile($profileTitle, $username, $useremail)) {
@@ -71,11 +71,10 @@ class UpdateGitProfileCommand extends BaseCommand
      * On CLI ask quesion to user.
      *
      * @param  string  $question
-     * @param  boolean $required
      * @param  string  $message
      * @return mixed
      */
-    public function askQuestion($question, $required = false, $message)
+    public function askQuestion($question, $message)
     {
         $helper = $this->getHelper('question');
         $output = $this->output;

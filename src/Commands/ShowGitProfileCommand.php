@@ -63,8 +63,15 @@ class ShowGitProfileCommand extends BaseCommand
         $mustRun = true;
         $profileInfo = [];
 
-        $profileInfo['name'] = $this->runCommand(sprintf('git config --global profile."%s".name', $profileTitle), $mustRun);
-        $profileInfo['email'] = $this->runCommand(sprintf('git config --global profile."%s".email', $profileTitle), $mustRun);
+        $profileInfo['name'] = $this->runCommand(
+            sprintf('git config --global profile."%s".name', $profileTitle),
+            $mustRun
+        );
+
+        $profileInfo['email'] = $this->runCommand(
+            sprintf('git config --global profile."%s".email', $profileTitle),
+            $mustRun
+        );
 
         return $profileInfo;
     }

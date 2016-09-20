@@ -50,10 +50,10 @@ class AddGitProfileCommand extends BaseCommand
         $style = new SymfonyStyle($input, $output);
 
         $output->writeln('');
-        $profileTitle =  $this->askQuestion("[+] Enter profile Title: ", true, 'Profile Title is required.');
+        $profileTitle =  $this->askQuestion("[+] Enter profile Title: ", 'Profile Title is required.');
         $output->writeln('');
-        $username      =  $this->askQuestion("[+] Enter Name: ", true, 'Name is required.');
-        $useremail      =  $this->askQuestion("[+] Enter Email: ", true, 'Email is required.');
+        $username      =  $this->askQuestion("[+] Enter Name: ", 'Name is required.');
+        $useremail      =  $this->askQuestion("[+] Enter Email: ", 'Email is required.');
         $output->writeln('');
 
 
@@ -66,11 +66,10 @@ class AddGitProfileCommand extends BaseCommand
      * On CLI ask quesion to user.
      *
      * @param  string  $question
-     * @param  boolean $required
      * @param  string  $message
      * @return mixed
      */
-    public function askQuestion($question, $required = false, $message)
+    public function askQuestion($question, $message)
     {
         $helper = $this->getHelper('question');
         $output = $this->output;
