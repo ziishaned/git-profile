@@ -1,5 +1,7 @@
 # git-profile
 
+[![Build Status](https://travis-ci.org/zeeshanu/git-profile.svg?branch=master)](https://travis-ci.org/zeeshanu/git-profile)
+
 > :octocat: Utility that helps you switch git configurations with ease
 
 ## Preface
