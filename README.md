@@ -50,7 +50,7 @@ $ git profile [options] <command>
 --ansi                  Force ANSI output
 --no-ansi               Disable ANSI output
 ```
-*Command*
+*Commands*
 ```
 rm                      Remove git profile
 use                     Change git profile locally or globally
