@@ -14,8 +14,10 @@ use Zeeshan\GitProfile\Commands\CurrentGitProfileCommand;
 // use Zeeshan\GitProfile\Commands\ListGitProfilesCommand;
 
 /**
- * @package GitProfile
- * @author  Zeeshan Ahmed<ziishaned@gmail.com>
+ * @package   Git Profile
+ * @author    Zeeshan Ahmed <ziishaned@gmail.com>
+ * @copyright 2016 Zeeshan Ahmed
+ * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class GitProfile
 {

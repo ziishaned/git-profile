@@ -9,8 +9,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @package GitProfile
- * @author  Zeeshan Ahmed<ziishaned@gmail.com>
+ * @package   Git Profile
+ * @author    Zeeshan Ahmed <ziishaned@gmail.com>
+ * @copyright 2016 Zeeshan Ahmed
+ * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class AddGitProfileCommand extends BaseCommand
 {
@@ -101,6 +103,7 @@ class AddGitProfileCommand extends BaseCommand
     public function saveProfile($profileTitle, $username, $useremail)
     {
         $mustRun = true;
+        
         $this->runCommand(sprintf('git config --global profile."%s".name "%s"', $profileTitle, $username), $mustRun);
         $this->runCommand(sprintf('git config --global profile."%s".email "%s"', $profileTitle, $useremail), $mustRun);
 

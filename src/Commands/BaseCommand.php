@@ -6,8 +6,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Process\Process;
 
 /**
- * @package GitProfile
- * @author  Zeeshan Ahmed<ziishaned@gmail.com>
+ * @package   Git Profile
+ * @author    Zeeshan Ahmed <ziishaned@gmail.com>
+ * @copyright 2016 Zeeshan Ahmed
+ * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class BaseCommand extends Command
 {
