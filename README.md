@@ -1,8 +1,8 @@
 # git-profile
 
+[![Build Status](https://img.shields.io/travis/zeeshanu/git-profile/master.svg?style=flat-square)](https://travis-ci.org/zeeshanu/git-profile)
 [![Latest Version](https://img.shields.io/github/release/zeeshanu/git-profile.svg?style=flat-square)](https://github.com/zeeshanu/git-profile/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/zeeshanu/git-profile/master.svg?style=flat-square)](https://travis-ci.org/zeeshanu/git-profile)
 
 > :octocat: Utility that helps you switch git configurations with ease
 
