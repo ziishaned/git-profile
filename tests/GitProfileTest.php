@@ -24,7 +24,7 @@ class GitProfileTest extends \PHPUnit_Framework_TestCase
 
     public function testCanRunProfileBaseCommand()
     {
-        $process = new Process('php git-profile');
+        $process = new Process('php bin/git-profile');
         $process->run();
 
         $this->assertEquals(0, $process->getExitCode());
