@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * @package   Git Profile
+ * @author    Zeeshan Ahmed <ziishaned@gmail.com>
+ * @copyright 2016 Zeeshan Ahmed
+ * @license   http://www.opensource.org/licenses/mit-license.html MIT License
+ */
+
+$autoloader = __DIR__ . '/../vendor/autoload.php';
+
+if(!file_exists($autoloader)) {
+	$stderr = fopen('php://stderr', 'w');
+    fwrite(
+        $stderr,
+        'Unable to find composer autoloader. Make sure dependencies are '
+        . 'installed by running "composer install" before running this script.'
+        . PHP_EOL
+    );
+    fclose($stderr);
+    exit(1);
+} else {
+	require_once $autoloader;	
+}
+
+use Zeeshan\GitProfile\GitProfile;
+
+$gitprofile = new GitProfile();
+$gitprofile->runApplication();
