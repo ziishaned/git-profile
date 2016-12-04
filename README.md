@@ -133,8 +133,8 @@ $ git profile current
 *Side note* It should be noted that profiles are maintained globally. When you `use` some profile locally, what it does is get the configuration for that profile and sets it for the current project. i.e. when `use` is run locally it is equivalent to
 
 ```
-git config user.name "Name for specified profile"
-git config user.email "email-for-specified@profile.com"
+$ git config user.name "Name for specified profile"
+$ git config user.email "email-for-specified@profile.com"
 ```
 
 ## License
