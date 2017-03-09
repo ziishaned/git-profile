@@ -2,7 +2,6 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,12 +17,12 @@ class UpdateGitProfileCommand extends BaseCommand
 {
 
     /**
-     * @var Symfony\Component\Console\Input\InputInterface
+     * @var InputInterface
      */
     protected $input;
 
     /**
-     * @var Symfony\Component\Console\Output\OutputInterface
+     * @var OutputInterface
      */
     protected $output;
 
@@ -35,33 +34,34 @@ class UpdateGitProfileCommand extends BaseCommand
     public function configure()
     {
         $this->setName('update')
-             ->setDescription('Update git profile.');
+            ->setDescription('Update git profile.');
     }
 
     /**
      * Execute the command
      *
-     * @param  Symfony\Component\Console\Input\InputInterface  $input
-     * @param  Symfony\Component\Console\Output\OutputInterface $output
+     * @param  InputInterface $input
+     * @param  OutputInterface $output
+     *
      * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->input  =  $input;
-        $this->output =  $output;
+        $this->input = $input;
+        $this->output = $output;
         $style = new SymfonyStyle($input, $output);
 
         $output->writeln('');
 
-        $profileTitle =  $this->askQuestion("[+] Enter profile Title: ", 'Profile Title is required.');
+        $profileTitle = $this->askQuestion("[+] Enter profile Title: ", 'Profile Title is required.');
         if (!$this->doesProfileExists($profileTitle)) {
             $style->error('Profile "' . $profileTitle . '" not exists.');
             exit(1);
         }
 
         $output->writeln('');
-        $username      =  $this->askQuestion("[+] Enter Name: ", 'Name is required.');
-        $useremail      =  $this->askQuestion("[+] Enter Email: ", 'Email is required.');
+        $username = $this->askQuestion("[+] Enter Name: ", 'Name is required.');
+        $useremail = $this->askQuestion("[+] Enter Email: ", 'Email is required.');
         $output->writeln('');
 
         if ($this->updateProfile($profileTitle, $username, $useremail)) {
@@ -72,8 +72,9 @@ class UpdateGitProfileCommand extends BaseCommand
     /**
      * On CLI ask quesion to user.
      *
-     * @param  string  $question
-     * @param  string  $message
+     * @param  string $question
+     * @param  string $message
+     *
      * @return mixed
      */
     public function askQuestion($question, $message)
@@ -103,6 +104,7 @@ class UpdateGitProfileCommand extends BaseCommand
      * @param  string $profileTitle
      * @param  string $username
      * @param  string $useremail
+     *
      * @return boolean
      */
     public function updateProfile($profileTitle, $username, $useremail)

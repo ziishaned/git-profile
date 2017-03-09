@@ -19,6 +19,9 @@ class BaseCommand extends Command
      *
      * @param  string  $command
      * @param  boolean $mustRun
+     *
+     * @throws \Exception
+     *
      * @return mixed
      */
     public function runCommand($command, $mustRun = false)
@@ -28,7 +31,7 @@ class BaseCommand extends Command
             $process->mustRun();
 
             return trim($process->getOutput());
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             if ($mustRun) {
                 throw $e;
             }
@@ -56,14 +59,15 @@ class BaseCommand extends Command
     }
 
     /**
-     * Reterive current git profile
+     * Retrieve current git profile
      *
-     * @param  string $flag
-     * @return mixed
+     * @param bool $global
+     *
+     * @return string
      */
-    public function reteriveCurrentProfile($flag = null)
+    public function reteriveCurrentProfile($global = false)
     {
-        if (!is_null($flag)) {
+        if ($global) {
             return $this->runCommand('git config --global current-profile.name');
         }
 

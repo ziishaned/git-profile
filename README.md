@@ -58,6 +58,7 @@ add                     Create a new git profile
 show 					Show details for an existing profile
 update 					Update details for an existing profile
 current                 Gets the currently set profile
+list                    List of profiles
 ```
 
 
@@ -135,6 +136,12 @@ $ git profile current
 ```
 $ git config user.name "Name for specified profile"
 $ git config user.email "email-for-specified@profile.com"
+```
+
+### List of profiles
+
+```
+$ git profile list
 ```
 
 ## License

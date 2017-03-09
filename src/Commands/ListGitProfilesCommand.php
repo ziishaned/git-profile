@@ -2,9 +2,9 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * @package   Git Profile
@@ -23,19 +23,44 @@ class ListGitProfilesCommand extends BaseCommand
     public function configure()
     {
         $this->setName('list')
-             ->setDescription('Get all the git profiles.');
+            ->setDescription('Get all the git profiles.');
     }
 
     /**
      * Execute the command
      *
-     * @param  Symfony\Component\Console\Input\InputInterface  $input
-     * @param  Symfony\Component\Console\Output\OutputInterface $output
+     * @param  InputInterface $input
+     * @param  OutputInterface $output
+     *
      * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('This is your <info>.gitconfig</info> from your PC Home directory.');
-        $output->writeln(file_get_contents($_SERVER['HOMEPATH'] . '\.gitconfig'));
+        $style = new SymfonyStyle($input, $output);
+
+        // don't know how it will be works on other systems
+        // mb add while and check several paths?
+        $configPath = sprintf('%s%s.gitconfig', $_SERVER['HOME'], DIRECTORY_SEPARATOR);
+
+        if (file_exists($configPath)) {
+            $config = file_get_contents($configPath);
+
+            if (preg_match_all('~\[profile "(.*?)"\]~ui', $config, $found)) {
+                $profiles = array_unique($found[1]);
+
+                $output->writeln('');
+                $output->writeln('Available profiles:');
+
+                array_walk($profiles, function ($v) use ($output) {
+                    $output->writeln(sprintf('    %s', $v));
+                });
+                exit();
+            }
+
+            $style->error("Profiles not setted.");
+            exit();
+        }
+
+        $style->error("Can't detect .gitconfig file");
     }
 }
