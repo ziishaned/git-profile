@@ -142,6 +142,11 @@ $ git config user.email "email-for-specified@profile.com"
 
 ```
 $ git profile list
+
+Available profiles:
+    Github
+    Home
+    Office
 ```
 
 ## License
