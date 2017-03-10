@@ -49,25 +49,25 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
 
-    public function testSwitchProfileMustEqualsToReteriveProfileForGlobalFlag()
+    public function testSwitchProfileMustEqualsToRetrieveProfileForGlobalFlag()
     {
         $flag = 'global';
         $profileTitle = 'Personal';
 
         $this->command->switchProfile($profileTitle, $flag);
-        $reterivedProfile = $this->command->retrieveCurrentProfile($flag);
+        $retrievedProfile = $this->command->retrieveCurrentProfile($flag);
 
-        $this->assertTrue($profileTitle == $reterivedProfile);
+        $this->assertTrue($profileTitle == $retrievedProfile);
     }
 
-    public function testSwitchProfileMustEqualsToReteriveProfileForNoGlobalFlag()
+    public function testSwitchProfileMustEqualsToRetrieveProfileForNoGlobalFlag()
     {
         $profileTitle = 'Personal';
 
         $this->command->switchProfile($profileTitle);
-        $reterivedProfile = $this->command->retrieveCurrentProfile();
+        $retrievedProfile = $this->command->retrieveCurrentProfile();
 
-        $this->assertTrue($profileTitle == $reterivedProfile);
+        $this->assertTrue($profileTitle == $retrievedProfile);
     }
 
     public function testDoesProfileExistsShouldReturnsTrueIfProfileExists()
