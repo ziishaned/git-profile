@@ -38,9 +38,9 @@ class CurrentGitProfileCommand extends BaseCommand
     public function execute(InputInterface $input, OutputInterface $output)
     {
         if ($input->getOption('global')) {
-            $currentProfile = $this->reteriveCurrentProfile(true);
+            $currentProfile = $this->retrieveCurrentProfile(true);
         } else {
-            $currentProfile = $this->reteriveCurrentProfile();
+            $currentProfile = $this->retrieveCurrentProfile();
         }
 
         if (!empty($currentProfile) && $this->doesProfileExists($currentProfile)) {

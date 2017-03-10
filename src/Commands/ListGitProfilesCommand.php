@@ -57,7 +57,7 @@ class ListGitProfilesCommand extends BaseCommand
                 exit();
             }
 
-            $style->error("Profiles not setted.");
+            $style->error("Profiles aren't set");
             exit();
         }
 

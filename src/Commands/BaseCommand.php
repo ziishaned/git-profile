@@ -65,7 +65,7 @@ class BaseCommand extends Command
      *
      * @return string
      */
-    public function reteriveCurrentProfile($global = false)
+    public function retrieveCurrentProfile($global = false)
     {
         if ($global) {
             return $this->runCommand('git config --global current-profile.name');
