@@ -38,29 +38,53 @@ class ListGitProfilesCommand extends BaseCommand
     {
         $style = new SymfonyStyle($input, $output);
 
-        // don't know how it will be works on other systems
-        // mb add while and check several paths?
-        $configPath = sprintf('%s%s.gitconfig', $_SERVER['HOME'], DIRECTORY_SEPARATOR);
+        $configPath = $this->findConfigPath();
 
-        if (file_exists($configPath)) {
-            $config = file_get_contents($configPath);
+        if (empty($configPath)) {
+            $style->error("Can't detect .gitconfig file");
+            exit(1);
+        }
 
-            if (preg_match_all('~\[profile "(.*?)"\]~ui', $config, $found)) {
-                $profiles = array_unique($found[1]);
+        $config = file_get_contents($configPath);
 
-                $output->writeln('');
-                $output->writeln('Available profiles:');
+        if (preg_match_all('~\[profile "(.*?)"\]~ui', $config, $found)) {
+            $profiles = array_unique($found[1]);
 
-                array_walk($profiles, function ($v) use ($output) {
-                    $output->writeln(sprintf('    %s', $v));
-                });
-                exit();
-            }
+            $output->writeln('');
+            $output->writeln('Available profiles:');
 
-            $style->error("Profiles aren't set");
+            array_walk($profiles, function ($v) use ($output) {
+                $output->writeln(sprintf('    %s', $v));
+            });
             exit();
         }
 
-        $style->error("Can't detect .gitconfig file");
+        $style->error("Profiles aren't set");
+        exit(1);
+
+    }
+
+    /**
+     * Finding .gitconfig file
+     *
+     * @return bool|string
+     */
+    private function findConfigPath()
+    {
+        $configPath = '';
+
+        if (isset($_SERVER['HOME'])) {
+            // linux, macos, ...
+            $configPath = sprintf('%s%s.gitconfig', $_SERVER['HOME'], DIRECTORY_SEPARATOR);
+        } elseif (isset($_SERVER['HOMEPATH'])) {
+            // windows
+            $configPath = sprintf('%s%s.gitconfig', $_SERVER['HOMEPATH'], DIRECTORY_SEPARATOR);
+        }
+
+        if (!empty($configPath) && file_exists($configPath) && is_readable($configPath)) {
+            return $configPath;
+        }
+
+        return false;
     }
 }
