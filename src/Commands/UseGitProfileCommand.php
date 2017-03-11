@@ -58,7 +58,7 @@ class UseGitProfileCommand extends BaseCommand
 
             $output->writeln('');
             $style->success('Switched to "' . $profileTitle . '"');
-            exit(1);
+            exit();
         }
 
         $this->runCommand(sprintf('git config user.name "%s"', $name), $mustRun);

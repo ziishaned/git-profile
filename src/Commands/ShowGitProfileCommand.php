@@ -47,7 +47,7 @@ class ShowGitProfileCommand extends BaseCommand
             $output->writeln('');
             $output->writeln('[+] Name: ' . $profileInfo['name']);
             $output->writeln('[+] Email: ' . $profileInfo['email']);
-            exit(1);
+            exit();
         };
 
         $style->error('Profile "' . $profileTitle . '" not exists.');
