@@ -2,9 +2,7 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -25,39 +23,40 @@ class CurrentGitProfileCommand extends BaseCommand
     public function configure()
     {
         $this->setName('current')
-             ->setDescription('Get the current profile.')
-             ->addOption('global', null, InputOption::VALUE_NONE, 'Set git profile global.');
+            ->setDescription('Get the current profile.')
+            ->addOption('global', null, InputOption::VALUE_NONE, 'Set git profile global.');
     }
 
     /**
      * Execute the command
      *
-     * @param  Symfony\Component\Console\Input\InputInterface  $input
-     * @param  Symfony\Component\Console\Output\OutputInterface $output
+     * @param  InputInterface $input
+     * @param  OutputInterface $output
+     *
      * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-
-        $style = new SymfonyStyle($input, $output);
-
         if ($input->getOption('global')) {
-            $currentProfile = $this->reteriveCurrentProfile('global');
+            $currentProfile = $this->retrieveCurrentProfile(true);
+        } else {
+            $currentProfile = $this->retrieveCurrentProfile();
         }
 
-        $currentProfile = $this->reteriveCurrentProfile();
-
-        if ($this->doesProfileExists($currentProfile)) {
-            $email =  $this->runCommand(sprintf('git config --global profile.%s.email', $currentProfile));
-            $name  =  $this->runCommand(sprintf('git config --global profile.%s.name', $currentProfile));
+        if (!empty($currentProfile) && $this->doesProfileExists($currentProfile)) {
+            $email = $this->runCommand(sprintf('git config --global profile.%s.email', $currentProfile));
+            $name = $this->runCommand(sprintf('git config --global profile.%s.name', $currentProfile));
 
             $output->writeln('');
             $output->writeln('[+] Current Profile: ' . $currentProfile);
             $output->writeln('[+] Name: ' . $name);
             $output->writeln('[+] Email: ' . $email);
-            exit(1);
+            exit();
         }
 
-        $style->error('Something went wrong.');
+        $output->writeln('');
+        $output->writeln('[+] Profile is not set. Standard settings are used.');
+        $output->writeln(sprintf('[+] Name: %s', $this->runCommand(sprintf('git config user.name'))));
+        $output->writeln(sprintf('[+] Email: %s', $this->runCommand(sprintf('git config user.email'))));
     }
 }

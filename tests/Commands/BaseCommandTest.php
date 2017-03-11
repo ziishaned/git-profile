@@ -1,20 +1,19 @@
-<?php 
+<?php
 
 namespace Tests\Commands;
 
-use Symfony\Component\Process\Process;
-use Symfony\Component\Console\Application;
 use Zeeshan\GitProfile\Commands\BaseCommand;
 use Zeeshan\GitProfile\Commands\AddGitProfileCommand;
 
 class BaseCommandTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var  BaseCommand */
     private $command;
 
     public function setUp()
     {
         $this->command = new BaseCommand('optional-arg');
-    (new AddGitProfileCommand)->saveProfile('Personal', 'John Doe', 'johndoe@gmail.com');
+        (new AddGitProfileCommand)->saveProfile('Personal', 'John Doe', 'johndoe@gmail.com');
     }
 
     public function testMustRunCommandReturnsOutputForValidCommand()
@@ -29,60 +28,60 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Exception
      */
-   public function testMustRunCommandFailsForInvalidCommand() 
-   {
+    public function testMustRunCommandFailsForInvalidCommand()
+    {
         $mustRun = true;
 
         $this->command->runCommand('Invalid Command', $mustRun);
-   }
+    }
 
-   public function testSwitchProfileGlobalIfFlagIsGlobal()
-   {
-      $flag = 'global';
-      
-      $result = $this->command->switchProfile('Personal', $flag);
-      $this->assertTrue($result);
-   }
+    public function testSwitchProfileGlobalIfFlagIsGlobal()
+    {
+        $flag = 'global';
 
-   public function testSwitchProfileLocalIfFlagIsNotSet()
-   {      
-      $result = $this->command->switchProfile('Personal');
-      $this->assertTrue($result);
-   }
+        $result = $this->command->switchProfile('Personal', $flag);
+        $this->assertTrue($result);
+    }
 
-   public function testSwitchProfileMustEqualsToReteriveProfileForGlobalFlag()
-   {
-      $flag = 'global';
-      $profileTitle = 'Personal';
+    public function testSwitchProfileLocalIfFlagIsNotSet()
+    {
+        $result = $this->command->switchProfile('Personal');
+        $this->assertTrue($result);
+    }
 
-      $this->command->switchProfile($profileTitle, $flag);
-      $reterivedProfile = $this->command->reteriveCurrentProfile($flag);
+    public function testSwitchProfileMustEqualsToRetrieveProfileForGlobalFlag()
+    {
+        $flag = 'global';
+        $profileTitle = 'Personal';
 
-      $this->assertTrue($profileTitle == $reterivedProfile);
-   }
+        $this->command->switchProfile($profileTitle, $flag);
+        $retrievedProfile = $this->command->retrieveCurrentProfile($flag);
 
-   public function testSwitchProfileMustEqualsToReteriveProfileForNoGlobalFlag()
-   {
-      $profileTitle = 'Personal';
+        $this->assertTrue($profileTitle == $retrievedProfile);
+    }
 
-      $this->command->switchProfile($profileTitle);
-      $reterivedProfile = $this->command->reteriveCurrentProfile();
+    public function testSwitchProfileMustEqualsToRetrieveProfileForNoGlobalFlag()
+    {
+        $profileTitle = 'Personal';
 
-      $this->assertTrue($profileTitle == $reterivedProfile);
-   }
+        $this->command->switchProfile($profileTitle);
+        $retrievedProfile = $this->command->retrieveCurrentProfile();
 
-   public function testDoesProfileExistsShouldReturnsTrueIfProfileExists()
-   {
-      $this->setUp();
-      $result = $this->command->doesProfileExists('Personal');
-      
-      $this->assertTrue($result);
-   }
+        $this->assertTrue($profileTitle == $retrievedProfile);
+    }
 
-   public function testDoesProfileExistsShouldReturnsFalseIfProfileNotExists()
-   {
-      $result = $this->command->doesProfileExists('Not Exist');
-      
-      $this->assertFalse($result);
-   }
+    public function testDoesProfileExistsShouldReturnsTrueIfProfileExists()
+    {
+        $this->setUp();
+        $result = $this->command->doesProfileExists('Personal');
+
+        $this->assertTrue($result);
+    }
+
+    public function testDoesProfileExistsShouldReturnsFalseIfProfileNotExists()
+    {
+        $result = $this->command->doesProfileExists('Not Exist');
+
+        $this->assertFalse($result);
+    }
 }

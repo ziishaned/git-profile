@@ -10,8 +10,7 @@ use Zeeshan\GitProfile\Commands\ShowGitProfileCommand;
 use Zeeshan\GitProfile\Commands\RemoveGitProfileCommand;
 use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
 use Zeeshan\GitProfile\Commands\CurrentGitProfileCommand;
-
-// use Zeeshan\GitProfile\Commands\ListGitProfilesCommand;
+use Zeeshan\GitProfile\Commands\ListGitProfilesCommand;
 
 /**
  * @package   Git Profile
@@ -46,7 +45,7 @@ class GitProfile
         $this->commands[] = new ShowGitProfileCommand();
         $this->commands[] = new UpdateGitProfileCommand();
         $this->commands[] = new CurrentGitProfileCommand();
-        // $this->commands[] = new ListGitProfilesCommand();
+        $this->commands[] = new ListGitProfilesCommand();
     }
 
     /**
@@ -67,7 +66,6 @@ class GitProfile
         $application = new Application(self::APPLICATION_NAME, self::APPLICATION_VERSION);
         $application->setDefaultCommand('gitprofile');
         $application->addCommands($this->getCommands());
-
         $application->run();
     }
 }

@@ -3,7 +3,6 @@
 namespace Zeeshan\GitProfile\Commands;
 
 use Zeeshan\GitProfile\GitProfile;
-use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -23,14 +22,15 @@ class GitProfileCommand extends BaseCommand
     public function configure()
     {
         $this->setName('gitprofile')
-             ->setDescription('Change git profile on the go.');
+            ->setDescription('Change git profile on the go.');
     }
 
     /**
      * Execute the command
      *
-     * @param  Symfony\Component\Console\Input\InputInterface  $input
-     * @param  Symfony\Component\Console\Output\OutputInterface $output
+     * @param  InputInterface $input
+     * @param  OutputInterface $output
+     *
      * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
@@ -53,9 +53,10 @@ class GitProfileCommand extends BaseCommand
         $output->writeln('  rm                     Remove git profile');
         $output->writeln('  use                    Change git profile locally or globally');
         $output->writeln('  add                    Create a new git profile');
-        $output->writeln('  show                     Get the profile detail');
-        $output->writeln('  update                  Update git profile');
-        $output->writeln('  current                 Get the current profile');
+        $output->writeln('  show                   Get the profile detail');
+        $output->writeln('  update                 Update git profile');
+        $output->writeln('  current                Get the current profile');
+        $output->writeln('  list                   List of profiles');
         $output->writeln('');
     }
 }

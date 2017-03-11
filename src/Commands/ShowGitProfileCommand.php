@@ -2,7 +2,6 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Zeeshan\GitProfile\Commands\BaseCommand;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,20 +24,20 @@ class ShowGitProfileCommand extends BaseCommand
     public function configure()
     {
         $this->setName('show')
-             ->setDescription('Get the profile detail.')
-             ->addArgument('profile-title', InputArgument::REQUIRED, 'Your profile title e.g personal or office');
+            ->setDescription('Get the profile detail.')
+            ->addArgument('profile-title', InputArgument::REQUIRED, 'Your profile title e.g personal or office');
     }
 
     /**
      * Execute the command
      *
-     * @param  Symfony\Component\Console\Input\InputInterface  $input
-     * @param  Symfony\Component\Console\Output\OutputInterface $output
+     * @param  InputInterface $input
+     * @param  OutputInterface $output
+     *
      * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-
         $style = new SymfonyStyle($input, $output);
         $profileTitle = $input->getArgument('profile-title');
 
@@ -48,7 +47,7 @@ class ShowGitProfileCommand extends BaseCommand
             $output->writeln('');
             $output->writeln('[+] Name: ' . $profileInfo['name']);
             $output->writeln('[+] Email: ' . $profileInfo['email']);
-            exit(1);
+            exit();
         };
 
         $style->error('Profile "' . $profileTitle . '" not exists.');
@@ -58,7 +57,8 @@ class ShowGitProfileCommand extends BaseCommand
      * Get profile detail
      *
      * @param  string $profileTitle
-     * @return boolean
+     *
+     * @return array
      */
     public function getProfile($profileTitle)
     {
