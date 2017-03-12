@@ -8,10 +8,14 @@
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 
-$autoloader = __DIR__ . '/../vendor/autoload.php';
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    $autoloader = __DIR__ . '/../vendor/autoload.php';
+} else {
+    $autoloader = __DIR__ . '/../../../autoload.php';
+}
 
-if(!file_exists($autoloader)) {
-	$stderr = fopen('php://stderr', 'w');
+if (!file_exists($autoloader)) {
+    $stderr = fopen('php://stderr', 'w');
     fwrite(
         $stderr,
         'Unable to find composer autoloader. Make sure dependencies are '
@@ -21,7 +25,7 @@ if(!file_exists($autoloader)) {
     fclose($stderr);
     exit(1);
 } else {
-	require_once $autoloader;	
+    require_once $autoloader;
 }
 
 use Zeeshan\GitProfile\GitProfile;
