@@ -34,6 +34,25 @@ This utility helps you save profiles and then you can switch between them using 
 
 ## Install
 
+```
+$ composer global require zeeshan/git-profile
+```
+Then check your ```$PATH``` variable. It must contain ```~/.composer/vendor/bin``` dir.
+
+```
+$ echo $PATH
+
+/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/home/username/.composer/vendor/bin
+```
+
+Modify your ```.zshrc``` or ```.bashrc``` files if your ```$PATH``` variable not contain composer/bin dir.
+
+```
+export PATH=~/.composer/vendor/bin:$PATH
+```
+
+#### Also you can use .phar file
+
 * Download the file from [here](https://github.com/zeeshanu/git-profile/releases/download/v1.0/git-profile)
 * `sudo chmod -R 755 git-profile`
 * `sudo mv git-profile /usr/local/bin/git-profile`
