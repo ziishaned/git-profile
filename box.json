@@ -17,7 +17,7 @@
         }
     ],
     "git-version": "package_version",
-    "main": "git-profile",
+    "main": "bin/git-profile",
     "output": "git-profile.phar",
     "stub": true
 }
