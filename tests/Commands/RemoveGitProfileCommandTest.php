@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Tests\Commands;
 
@@ -13,7 +13,7 @@ class RemoveGitProfileCommandTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->command = new RemoveGitProfileCommand();
-        (new AddGitProfileCommand)->saveProfile('Personal', 'Zeeshan Ahmed', 'ziishaned@gmail.com');
+        (new AddGitProfileCommand)->saveProfile('Personal', 'Zeeshan Ahmed', 'ziishaned@gmail.com', 'B7789A12');
     }
 
     public function testRemoveProfileShouldRemoveGitProfile()

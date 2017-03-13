@@ -47,12 +47,14 @@ class UseGitProfileCommand extends BaseCommand
             exit(1);
         }
 
-        $email = $this->runCommand(sprintf('git config --global profile.%s.email', $profileTitle));
         $name  = $this->runCommand(sprintf('git config --global profile.%s.name', $profileTitle));
+        $email  = $this->runCommand(sprintf('git config --global profile.%s.email', $profileTitle));
+        $signingkey = $this->runCommand(sprintf('git config --global profile.%s.signingkey', $profileTitle));
 
         if ($input->getOption('global')) {
             $this->runCommand(sprintf('git config --global user.name "%s"', $name), $mustRun);
             $this->runCommand(sprintf('git config --global user.email "%s"', $email), $mustRun);
+            $this->runCommand(sprintf('git config --global user.signingkey "%s"', $signingkey), $mustRun);
 
             $this->switchProfile($profileTitle, 'global');
 
@@ -63,6 +65,7 @@ class UseGitProfileCommand extends BaseCommand
 
         $this->runCommand(sprintf('git config user.name "%s"', $name), $mustRun);
         $this->runCommand(sprintf('git config user.email "%s"', $email), $mustRun);
+        $this->runCommand(sprintf('git config user.signingkey "%s"', $signingkey), $mustRun);
 
         $this->switchProfile($profileTitle);
 

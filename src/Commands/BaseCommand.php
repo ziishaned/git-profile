@@ -90,4 +90,59 @@ class BaseCommand extends Command
 
         return false;
     }
+
+    /**
+     * On CLI ask quesion to user.
+     *
+     * @param  string $question
+     * @param  string $message
+     * @param  string $required
+     *
+     * @return mixed
+     */
+    public function askQuestion($question, $message, $required = true)
+    {
+        $helper = $this->getHelper('question');
+        $output = $this->output;
+
+        $question = new Question($question);
+        $style = new SymfonyStyle($this->input, $this->output);
+
+        if ($required) {
+            $question->setValidator(function ($value) use ($output, $message, $style) {
+                if (empty($value)) {
+                    $style->error($message);
+                    exit(1);
+                }
+
+                return $value;
+            });
+        }
+
+        return $helper->ask($this->input, $this->output, $question);
+    }
+
+    /**
+     * Save git profile
+     *
+     * @param  string $profileTitle
+     * @param  string $username
+     * @param  string $email
+     * @param  string $signingkey
+     *
+     * @return boolean
+     */
+    public function saveProfile($profileTitle, $username, $email, $signingkey = '')
+    {
+        $mustRun = true;
+
+        $this->runCommand(sprintf('git config --global profile."%s".name "%s"', $profileTitle, $username), $mustRun);
+        $this->runCommand(sprintf('git config --global profile."%s".email "%s"', $profileTitle, $email), $mustRun);
+
+        if ($signingkey) {
+            $this->runCommand(sprintf('git config --global profile."%s".signingkey "%s"', $profileTitle, $signingkey), $mustRun);
+        }
+
+        return true;
+    }
 }
