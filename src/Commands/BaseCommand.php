@@ -4,6 +4,8 @@ namespace Zeeshan\GitProfile\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * @package   Git Profile
@@ -96,7 +98,7 @@ class BaseCommand extends Command
      *
      * @param  string $question
      * @param  string $message
-     * @param  string $required
+     * @param  bool $required
      *
      * @return mixed
      */

@@ -18,7 +18,6 @@ before_script:
 
 script:
   - ./vendor/bin/simple-phpunit -v
-  - ./vendor/bin/phpcs --standard=PSR2 src
 
 notifications:
     on_success: never

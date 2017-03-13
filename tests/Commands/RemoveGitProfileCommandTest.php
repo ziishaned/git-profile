@@ -30,7 +30,6 @@ class RemoveGitProfileCommandTest extends \PHPUnit_Framework_TestCase
 
     public function testDoesProfileExistsMustReturnTrueIfProfileExists()
     {
-        $this->setUp();
         $result = $this->command->doesProfileExists('Personal');
         $this->assertTrue($result);
     }
