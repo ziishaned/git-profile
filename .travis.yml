@@ -17,7 +17,7 @@ before_script:
   - composer install
 
 script:
-  - ./vendor/bin/phpunit
+  - ./vendor/bin/simple-phpunit -v
   - ./vendor/bin/phpcs --standard=PSR2 src
 
 notifications:
