@@ -157,7 +157,7 @@ $ git config user.name "Name for specified profile"
 $ git config user.email "email-for-specified@profile.com"
 ```
 
-### List of profiles
+### Profiles List
 
 ```
 $ git profile list
