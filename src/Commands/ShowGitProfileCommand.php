@@ -73,7 +73,7 @@ class ShowGitProfileCommand extends BaseCommand
 
         $profileInfo['signingkey'] = $this->runCommand(
             sprintf('git config --global profile."%s".signingkey', $profileTitle),
-            $mustRun
+            false
         );
 
         return $profileInfo;
