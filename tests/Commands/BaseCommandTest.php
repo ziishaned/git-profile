@@ -13,7 +13,7 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->command = new BaseCommand('optional-arg');
-        (new AddGitProfileCommand)->saveProfile('Personal', 'John Doe', 'johndoe@gmail.com');
+        (new AddGitProfileCommand)->saveProfile('test-Personal', 'John Doe', 'johndoe@gmail.com');
     }
 
     public function testMustRunCommandReturnsOutputForValidCommand()
@@ -39,20 +39,20 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
     {
         $flag = 'global';
 
-        $result = $this->command->switchProfile('Personal', $flag);
+        $result = $this->command->switchProfile('test-Personal', $flag);
         $this->assertTrue($result);
     }
 
     public function testSwitchProfileLocalIfFlagIsNotSet()
     {
-        $result = $this->command->switchProfile('Personal');
+        $result = $this->command->switchProfile('test-Personal');
         $this->assertTrue($result);
     }
 
     public function testSwitchProfileMustEqualsToRetrieveProfileForGlobalFlag()
     {
         $flag = 'global';
-        $profileTitle = 'Personal';
+        $profileTitle = 'test-Personal';
 
         $this->command->switchProfile($profileTitle, $flag);
         $retrievedProfile = $this->command->retrieveCurrentProfile($flag);
@@ -62,7 +62,7 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
 
     public function testSwitchProfileMustEqualsToRetrieveProfileForNoGlobalFlag()
     {
-        $profileTitle = 'Personal';
+        $profileTitle = 'test-Personal';
 
         $this->command->switchProfile($profileTitle);
         $retrievedProfile = $this->command->retrieveCurrentProfile();
@@ -73,7 +73,7 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
     public function testDoesProfileExistsShouldReturnsTrueIfProfileExists()
     {
         $this->setUp();
-        $result = $this->command->doesProfileExists('Personal');
+        $result = $this->command->doesProfileExists('test-Personal');
 
         $this->assertTrue($result);
     }

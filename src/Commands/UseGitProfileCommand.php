@@ -43,8 +43,7 @@ class UseGitProfileCommand extends BaseCommand
         $profileTitle = $input->getArgument('profile-title');
 
         if (!$this->doesProfileExists($profileTitle)) {
-            $style->error('Profile "' . $profileTitle . '" not exists.');
-            exit(1);
+            throw new \Exception('Profile "' . $profileTitle . '" not exists.');
         }
 
         $name  = $this->runCommand(sprintf('git config --global profile.%s.name', $profileTitle));
@@ -59,8 +58,9 @@ class UseGitProfileCommand extends BaseCommand
             $this->switchProfile($profileTitle, 'global');
 
             $output->writeln('');
-            $style->success('Switched to "' . $profileTitle . '"');
-            exit();
+            $style->success('Switched to "' . $profileTitle . '" *globally*');
+
+            return;
         }
 
         $this->runCommand(sprintf('git config user.name "%s"', $name), $mustRun);

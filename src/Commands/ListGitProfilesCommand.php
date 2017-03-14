@@ -41,8 +41,7 @@ class ListGitProfilesCommand extends BaseCommand
         $configPath = $this->findConfigPath();
 
         if (empty($configPath)) {
-            $style->error("Can't detect .gitconfig file");
-            exit(1);
+            throw new \Exception("Can't detect .gitconfig file");
         }
 
         $config = file_get_contents($configPath);
@@ -56,11 +55,11 @@ class ListGitProfilesCommand extends BaseCommand
             array_walk($profiles, function ($v) use ($output) {
                 $output->writeln(sprintf('    %s', $v));
             });
-            exit();
+
+            return;
         }
 
-        $style->error("Profiles aren't set");
-        exit(1);
+        throw new \Exception("Profiles aren't set");
     }
 
     /**

@@ -113,12 +113,12 @@ class BaseCommand extends Command
         if ($required) {
             $question->setValidator(function ($value) use ($output, $message, $style) {
                 if (empty($value)) {
-                    $style->error($message);
-                    exit(1);
+                    throw new \Exception($message);
                 }
 
                 return $value;
             });
+            $question->setMaxAttempts(1);
         }
 
         return $helper->ask($this->input, $this->output, $question);

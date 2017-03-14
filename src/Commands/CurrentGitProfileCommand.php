@@ -53,7 +53,8 @@ class CurrentGitProfileCommand extends BaseCommand
             $output->writeln('[+] Name: ' . $name);
             $output->writeln('[+] Email: ' . $email);
             $output->writeln('[+] Signingkey: ' . $signingkey);
-            exit();
+
+            return;
         }
 
         $output->writeln('');
