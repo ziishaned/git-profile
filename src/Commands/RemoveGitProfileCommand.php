@@ -44,10 +44,11 @@ class RemoveGitProfileCommand extends BaseCommand
 
         if ($this->doesProfileExists($profileTitle) && $this->removeProfile($profileTitle)) {
             $style->success('Profile "' . $profileTitle . '" successfully removed.');
-            exit();
+
+            return;
         };
 
-        $style->error('Profile "' . $profileTitle . '" not exists.');
+        throw new \Exception('Profile "' . $profileTitle . '" not exists.');
     }
 
     /**

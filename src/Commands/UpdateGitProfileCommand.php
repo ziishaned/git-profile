@@ -53,8 +53,7 @@ class UpdateGitProfileCommand extends BaseCommand
 
         $profileTitle = $this->askQuestion("[+] Enter profile Title: ", 'Profile Title is required.');
         if (!$this->doesProfileExists($profileTitle)) {
-            $style->error('Profile "' . $profileTitle . '" not exists.');
-            exit(1);
+            throw new \Exception('Profile "' . $profileTitle . '" not exists.');
         }
 
         $output->writeln('');
