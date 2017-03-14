@@ -7,18 +7,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class ListGitProfilesCommand extends BaseCommand
 {
-
     /**
-     * Configure the command
-     *
-     * @return void
+     * Configure the command.
      */
     public function configure()
     {
@@ -27,12 +23,10 @@ class ListGitProfilesCommand extends BaseCommand
     }
 
     /**
-     * Execute the command
+     * Execute the command.
      *
-     * @param  InputInterface $input
-     * @param  OutputInterface $output
-     *
-     * @return void
+     * @param InputInterface  $input
+     * @param OutputInterface $output
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
@@ -63,7 +57,7 @@ class ListGitProfilesCommand extends BaseCommand
     }
 
     /**
-     * Finding .gitconfig file
+     * Finding .gitconfig file.
      *
      * @return bool|string
      */

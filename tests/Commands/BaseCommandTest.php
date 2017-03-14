@@ -2,18 +2,18 @@
 
 namespace Tests\Commands;
 
-use Zeeshan\GitProfile\Commands\BaseCommand;
 use Zeeshan\GitProfile\Commands\AddGitProfileCommand;
+use Zeeshan\GitProfile\Commands\BaseCommand;
 
 class BaseCommandTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var  BaseCommand */
+    /** @var BaseCommand */
     private $command;
 
     public function setUp()
     {
         $this->command = new BaseCommand('optional-arg');
-        (new AddGitProfileCommand)->saveProfile('test-Personal', 'John Doe', 'johndoe@gmail.com');
+        (new AddGitProfileCommand())->saveProfile('test-Personal', 'John Doe', 'johndoe@gmail.com');
     }
 
     public function testMustRunCommandReturnsOutputForValidCommand()
@@ -22,7 +22,7 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
         $expectedOutput = 'test output';
 
         $result = $this->command->runCommand(sprintf('echo %s', $expectedOutput), $mustRun);
-        $this->assertEquals($expectedOutput, $result);
+        $this->assertSame($expectedOutput, $result);
     }
 
     /**
@@ -57,7 +57,7 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
         $this->command->switchProfile($profileTitle, $flag);
         $retrievedProfile = $this->command->retrieveCurrentProfile($flag);
 
-        $this->assertTrue($profileTitle == $retrievedProfile);
+        $this->assertSame($profileTitle, $retrievedProfile);
     }
 
     public function testSwitchProfileMustEqualsToRetrieveProfileForNoGlobalFlag()
@@ -67,7 +67,7 @@ class BaseCommandTest extends \PHPUnit_Framework_TestCase
         $this->command->switchProfile($profileTitle);
         $retrievedProfile = $this->command->retrieveCurrentProfile();
 
-        $this->assertTrue($profileTitle == $retrievedProfile);
+        $this->assertSame($profileTitle, $retrievedProfile);
     }
 
     public function testDoesProfileExistsShouldReturnsTrueIfProfileExists()

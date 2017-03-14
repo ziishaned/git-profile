@@ -8,7 +8,7 @@
 
 ## Preface
 
-It is possible that you have multiple git configurations. For example
+It is possible that you have multiple git configurations. For example:
 
 ```
 ; Office Profile
@@ -17,7 +17,7 @@ Email: johndoe@office.com
 
 ; Personal Profile
 Name: John Doe
-Email: johndoe@gmail.com 
+Email: johndoe@gmail.com
 ```
 
 It could be a hassle to remember and switch between the profiles while working on different projects.
@@ -60,7 +60,7 @@ export PATH=~/.composer/vendor/bin:$PATH
 ## Usage
 
 ```
-$ git profile [options] <command>
+$ git-profile [options] <command>
 ```
 *Options*
 ```
@@ -74,12 +74,11 @@ $ git profile [options] <command>
 rm                      Remove git profile
 use                     Change git profile locally or globally
 add                     Create a new git profile
-show 					Show details for an existing profile
-update 					Update details for an existing profile
+show                    Show details for an existing profile
+update                  Update details for an existing profile
 current                 Gets the currently set profile
 list                    List of profiles
 ```
-
 
 ## Examples
 
@@ -87,7 +86,7 @@ Find some of the sample usages below
 
 ### Adding Profiles
 ```
-$ git profile add
+$ git-profile add
 
 [+] Enter profile title: Office
 
@@ -100,23 +99,23 @@ $ git profile add
 ### Remove Git Profile
 
 ```
-$ git profile rm "Office"
+$ git-profile rm "Office"
 
-[OK] Profile "Office" successfully removed 
+[OK] Profile "Office" successfully removed
 ```
 
 ### Show Details for a profile
 
 ```
-$ git profile show "Office"
+$ git-profile show "Office"
 
 [+] Name:  John Doe
-[+] Email: johndoe@office.com 
+[+] Email: johndoe@office.com
 ```
 
 ### Updating Profile
 ```
-$ git profile update "Office"
+$ git-profile update "Office"
 
 [+] Enter Name:  Jane Doe
 [+] Enter Email: janedoe@gmail.com
@@ -128,14 +127,14 @@ $ git profile update "Office"
 
 *Setting details locally i.e. set profile for the current project*
 ```
-$ git profile use "Office"
+$ git-profile use "Office"
 
 [OK] Switched to "Office"
 ```
 
 *Setting details globally i.e. set global configuration*
 ```
-$ git profile use "Office" --global
+$ git-profile use "Office" --global
 
 [OK] Switched to "Office"
 ```
@@ -143,7 +142,7 @@ $ git profile use "Office" --global
 ### Get Current Profile
 
 ```
-$ git profile current
+$ git-profile current
 
 [+] Current Profile "Office"
 [+] Name: John Doe
@@ -160,7 +159,7 @@ $ git config user.email "email-for-specified@profile.com"
 ### Profiles List
 
 ```
-$ git profile list
+$ git-profile list
 
 Available profiles:
     Github

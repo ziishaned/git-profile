@@ -3,38 +3,36 @@
 namespace Zeeshan\GitProfile;
 
 use Symfony\Component\Console\Application;
-use Zeeshan\GitProfile\Commands\GitProfileCommand;
 use Zeeshan\GitProfile\Commands\AddGitProfileCommand;
-use Zeeshan\GitProfile\Commands\UseGitProfileCommand;
-use Zeeshan\GitProfile\Commands\ShowGitProfileCommand;
-use Zeeshan\GitProfile\Commands\RemoveGitProfileCommand;
-use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
 use Zeeshan\GitProfile\Commands\CurrentGitProfileCommand;
+use Zeeshan\GitProfile\Commands\GitProfileCommand;
 use Zeeshan\GitProfile\Commands\ListGitProfilesCommand;
+use Zeeshan\GitProfile\Commands\RemoveGitProfileCommand;
+use Zeeshan\GitProfile\Commands\ShowGitProfileCommand;
+use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
+use Zeeshan\GitProfile\Commands\UseGitProfileCommand;
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class GitProfile
 {
-
-    /**
-     * @var array
-     */
-    protected $commands = [];
-
     /**
      * @var string
      */
     const APPLICATION_NAME = 'Git Profile';
 
     /**
-     * @var  string
+     * @var string
      */
-    const APPLICATION_VERSION = '1.0';
+    const APPLICATION_VERSION = '2.0';
+
+    /**
+     * @var array
+     */
+    protected $commands = [];
 
     public function __construct()
     {
@@ -58,8 +56,6 @@ class GitProfile
 
     /**
      * The function from where whole fun begins.
-     *
-     * @return void
      */
     public function runApplication()
     {

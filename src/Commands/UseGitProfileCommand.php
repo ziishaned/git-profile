@@ -2,14 +2,13 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
@@ -17,9 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class UseGitProfileCommand extends BaseCommand
 {
     /**
-     * Configure the command
-     *
-     * @return void
+     * Configure the command.
      */
     public function configure()
     {
@@ -30,11 +27,10 @@ class UseGitProfileCommand extends BaseCommand
     }
 
     /**
-     * Execute the command
+     * Execute the command.
      *
-     * @param  InputInterface  $input
-     * @param  OutputInterface $output
-     * @return void
+     * @param InputInterface  $input
+     * @param OutputInterface $output
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
@@ -46,8 +42,8 @@ class UseGitProfileCommand extends BaseCommand
             throw new \Exception('Profile "' . $profileTitle . '" not exists.');
         }
 
-        $name  = $this->runCommand(sprintf('git config --global profile.%s.name', $profileTitle));
-        $email  = $this->runCommand(sprintf('git config --global profile.%s.email', $profileTitle));
+        $name = $this->runCommand(sprintf('git config --global profile.%s.name', $profileTitle));
+        $email = $this->runCommand(sprintf('git config --global profile.%s.email', $profileTitle));
         $signingkey = $this->runCommand(sprintf('git config --global profile.%s.signingkey', $profileTitle));
 
         if ($input->getOption('global')) {

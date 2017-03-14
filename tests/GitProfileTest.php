@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Zeeshan\GitProfile\GitProfile;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Process\Process;
+use Zeeshan\GitProfile\GitProfile;
 
 class GitProfileTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,6 +27,6 @@ class GitProfileTest extends \PHPUnit_Framework_TestCase
         $process = new Process('php bin/git-profile');
         $process->run();
 
-        $this->assertEquals(0, $process->getExitCode());
+        $this->assertSame(0, $process->getExitCode());
     }
 }

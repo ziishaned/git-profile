@@ -2,9 +2,9 @@
 
 namespace Tests\Commands;
 
-use Zeeshan\GitProfile\Commands\AddGitProfileCommand;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
+use Zeeshan\GitProfile\Commands\AddGitProfileCommand;
 
 class AddGitProfileCommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,7 +30,7 @@ class AddGitProfileCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      * @expectedExceptionMessage Email is required
      */
     public function testAddGitProfileWithoutRequiredValue()

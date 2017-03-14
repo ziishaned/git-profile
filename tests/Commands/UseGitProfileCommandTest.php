@@ -2,9 +2,9 @@
 
 namespace Tests\Commands;
 
-use Zeeshan\GitProfile\Commands\UseGitProfileCommand;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
+use Zeeshan\GitProfile\Commands\UseGitProfileCommand;
 
 class UseGitProfileCommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -44,7 +44,7 @@ class UseGitProfileCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      * @expectedExceptionMessage Profile "unknown" not exists
      */
     public function testUseGitProfileUnknownProfile()

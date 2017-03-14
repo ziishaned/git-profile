@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-Copyright (c) 2016 :Zeeshan Ahmed <ziishaned@gmail.com>
+Copyright (c) 2017 :Zeeshan Ahmed <ziishaned@gmail.com>
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal

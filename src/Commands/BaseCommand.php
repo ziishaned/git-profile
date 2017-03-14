@@ -3,24 +3,22 @@
 namespace Zeeshan\GitProfile\Commands;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Process\Process;
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class BaseCommand extends Command
 {
-
     /**
-     * Run the command
+     * Run the command.
      *
-     * @param  string  $command
-     * @param  boolean $mustRun
+     * @param string $command
+     * @param bool   $mustRun
      *
      * @throws \Exception
      *
@@ -43,25 +41,28 @@ class BaseCommand extends Command
     }
 
     /**
-     * Switch git profile
+     * Switch git profile.
      *
-     * @param  string $profileTitle
-     * @param  string $flag
+     * @param string $profileTitle
+     * @param string $flag
+     *
      * @return mixed
      */
     public function switchProfile($profileTitle, $flag = null)
     {
-        if (!is_null($flag)) {
+        if (null !== $flag) {
             $this->runCommand('git config --global current-profile.name ' . $profileTitle);
+
             return true;
         }
 
         $this->runCommand('git config current-profile.name ' . $profileTitle);
+
         return true;
     }
 
     /**
-     * Retrieve current git profile
+     * Retrieve current git profile.
      *
      * @param bool $global
      *
@@ -77,16 +78,17 @@ class BaseCommand extends Command
     }
 
     /**
-     * Check wether or not git profile exist
+     * Check wether or not git profile exist.
      *
-     * @param  string $profileTitle
-     * @return boolean
+     * @param string $profileTitle
+     *
+     * @return bool
      */
     public function doesProfileExists($profileTitle)
     {
         $commandOutput = $this->runCommand('git config --list');
 
-        if (stripos($commandOutput, "profile." . $profileTitle)) {
+        if (stripos($commandOutput, 'profile.' . $profileTitle)) {
             return true;
         }
 
@@ -96,9 +98,9 @@ class BaseCommand extends Command
     /**
      * On CLI ask quesion to user.
      *
-     * @param  string $question
-     * @param  string $message
-     * @param  bool $required
+     * @param string $question
+     * @param string $message
+     * @param bool   $required
      *
      * @return mixed
      */
@@ -125,14 +127,14 @@ class BaseCommand extends Command
     }
 
     /**
-     * Save git profile
+     * Save git profile.
      *
-     * @param  string $profileTitle
-     * @param  string $username
-     * @param  string $email
-     * @param  string $signingkey
+     * @param string $profileTitle
+     * @param string $username
+     * @param string $email
+     * @param string $signingkey
      *
-     * @return boolean
+     * @return bool
      */
     public function saveProfile($profileTitle, $username, $email, $signingkey = '')
     {
