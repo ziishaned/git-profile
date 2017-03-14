@@ -27,7 +27,7 @@ class GitProfile
     /**
      * @var string
      */
-    const APPLICATION_VERSION = '2.0';
+    const APPLICATION_VERSION = '2.1.0';
 
     /**
      * @var array
