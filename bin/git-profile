@@ -2,16 +2,13 @@
 <?php
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
-
+$autoloader = __DIR__ . '/../../../autoload.php';
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     $autoloader = __DIR__ . '/../vendor/autoload.php';
-} else {
-    $autoloader = __DIR__ . '/../../../autoload.php';
 }
 
 if (!file_exists($autoloader)) {
@@ -24,9 +21,9 @@ if (!file_exists($autoloader)) {
     );
     fclose($stderr);
     exit(1);
-} else {
-    require_once $autoloader;
 }
+
+require_once $autoloader;
 
 use Zeeshan\GitProfile\GitProfile;
 

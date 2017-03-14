@@ -2,9 +2,9 @@
 
 namespace Tests\Commands;
 
-use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
+use Zeeshan\GitProfile\Commands\UpdateGitProfileCommand;
 
 class UpdateGitProfileCommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +31,7 @@ class UpdateGitProfileCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      * @expectedExceptionMessage Profile "unknown" not exists
      */
     public function testUpdateGitProfileUnknownProfile()

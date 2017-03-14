@@ -2,12 +2,11 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
@@ -25,9 +24,7 @@ class AddGitProfileCommand extends BaseCommand
     protected $output;
 
     /**
-     * Configure the command
-     *
-     * @return void
+     * Configure the command.
      */
     public function configure()
     {
@@ -36,12 +33,10 @@ class AddGitProfileCommand extends BaseCommand
     }
 
     /**
-     * Execute the command
+     * Execute the command.
      *
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
-     *
-     * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
@@ -50,12 +45,12 @@ class AddGitProfileCommand extends BaseCommand
         $style = new SymfonyStyle($input, $output);
 
         $output->writeln('');
-        $profileTitle = $this->askQuestion("[+] Enter profile Title: ", 'Profile Title is required.');
+        $profileTitle = $this->askQuestion('[+] Enter profile Title: ', 'Profile Title is required.');
 
         $output->writeln('');
-        $username = $this->askQuestion("[+] Enter Name: ", 'Name is required.');
-        $email = $this->askQuestion("[+] Enter Email: ", 'Email is required.');
-        $signingkey = $this->askQuestion("[+] Enter Signingkey: ", 'Signingkey is optional.', false);
+        $username = $this->askQuestion('[+] Enter Name: ', 'Name is required.');
+        $email = $this->askQuestion('[+] Enter Email: ', 'Email is required.');
+        $signingkey = $this->askQuestion('[+] Enter Signingkey: ', 'Signingkey is optional.', false);
 
         $output->writeln('');
 

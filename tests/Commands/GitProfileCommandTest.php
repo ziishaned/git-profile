@@ -2,9 +2,9 @@
 
 namespace Tests\Commands;
 
-use Zeeshan\GitProfile\Commands\GitProfileCommand;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
+use Zeeshan\GitProfile\Commands\GitProfileCommand;
 
 class GitProfileCommandTest extends \PHPUnit_Framework_TestCase
 {

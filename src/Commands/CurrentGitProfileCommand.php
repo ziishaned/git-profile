@@ -2,23 +2,19 @@
 
 namespace Zeeshan\GitProfile\Commands;
 
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @package   Git Profile
  * @author    Zeeshan Ahmed <ziishaned@gmail.com>
  * @copyright 2016 Zeeshan Ahmed
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
  */
 class CurrentGitProfileCommand extends BaseCommand
 {
-
     /**
-     * Configure the command
-     *
-     * @return void
+     * Configure the command.
      */
     public function configure()
     {
@@ -28,12 +24,10 @@ class CurrentGitProfileCommand extends BaseCommand
     }
 
     /**
-     * Execute the command
+     * Execute the command.
      *
-     * @param  InputInterface $input
-     * @param  OutputInterface $output
-     *
-     * @return void
+     * @param InputInterface  $input
+     * @param OutputInterface $output
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {

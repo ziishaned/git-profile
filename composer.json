@@ -17,7 +17,8 @@
     },
     "require-dev": {
         "kherge/box": "~2.5",
-        "symfony/phpunit-bridge": "^3.2"
+        "symfony/phpunit-bridge": "^3.2",
+        "friendsofphp/php-cs-fixer": "~2.0"
     },
     "autoload": {
         "psr-4": {
@@ -31,5 +32,10 @@
     },
     "bin": [
         "bin/git-profile"
-    ]
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
 }

@@ -1,4 +1,4 @@
 vendor
-composer.lock
 git-profile.phar
 .idea
+.php_cs.cache
