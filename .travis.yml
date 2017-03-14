@@ -16,9 +16,6 @@ matrix:
           env: CS_FIXER=run
         - php: hhvm
 
-before_install:
-    - echo 'date.timezone = "Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-
 before_script:
     - composer --prefer-dist install --no-interaction -o --no-progress
 

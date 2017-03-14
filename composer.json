@@ -12,6 +12,7 @@
         "git"
     ],
     "require": {
+        "php": ">=5.5.9",
         "symfony/console": "^3.1",
         "symfony/process": "^3.1"
     },
@@ -37,5 +38,11 @@
         "branch-alias": {
             "dev-master": "2.0-dev"
         }
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        },
+        "sort-packages": true
     }
 }
