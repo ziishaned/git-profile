@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Tests\Commands;
 
@@ -16,7 +16,7 @@ class AddGitProfileCommandTest extends \PHPUnit_Framework_TestCase
 
     public function testSaveProfileShouldSaveGitProfile()
     {
-        $result = $this->command->saveProfile('Personal', 'Zeeshan Ahmed', 'ziishaned@gmail.com');
+        $result = $this->command->saveProfile('Personal', 'Zeeshan Ahmed', 'ziishaned@gmail.com', 'B7789A12');
         $this->assertTrue($result);
     }
 }

@@ -46,11 +46,13 @@ class CurrentGitProfileCommand extends BaseCommand
         if (!empty($currentProfile) && $this->doesProfileExists($currentProfile)) {
             $email = $this->runCommand(sprintf('git config --global profile.%s.email', $currentProfile));
             $name = $this->runCommand(sprintf('git config --global profile.%s.name', $currentProfile));
+            $signingkey = $this->runCommand(sprintf('git config --global profile.%s.signingkey', $currentProfile));
 
             $output->writeln('');
             $output->writeln('[+] Current Profile: ' . $currentProfile);
             $output->writeln('[+] Name: ' . $name);
             $output->writeln('[+] Email: ' . $email);
+            $output->writeln('[+] Signingkey: ' . $signingkey);
             exit();
         }
 
@@ -58,5 +60,6 @@ class CurrentGitProfileCommand extends BaseCommand
         $output->writeln('[+] Profile is not set. Standard settings are used.');
         $output->writeln(sprintf('[+] Name: %s', $this->runCommand(sprintf('git config user.name'))));
         $output->writeln(sprintf('[+] Email: %s', $this->runCommand(sprintf('git config user.email'))));
+        $output->writeln(sprintf('[+] Signingkey: %s', $this->runCommand(sprintf('git config user.signingkey'))));
     }
 }

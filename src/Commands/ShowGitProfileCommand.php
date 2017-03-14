@@ -47,6 +47,7 @@ class ShowGitProfileCommand extends BaseCommand
             $output->writeln('');
             $output->writeln('[+] Name: ' . $profileInfo['name']);
             $output->writeln('[+] Email: ' . $profileInfo['email']);
+            $output->writeln('[+] Signingkey: ' . $profileInfo['signingkey']);
             exit();
         };
 
@@ -72,6 +73,11 @@ class ShowGitProfileCommand extends BaseCommand
 
         $profileInfo['email'] = $this->runCommand(
             sprintf('git config --global profile."%s".email', $profileTitle),
+            $mustRun
+        );
+
+        $profileInfo['signingkey'] = $this->runCommand(
+            sprintf('git config --global profile."%s".signingkey', $profileTitle),
             $mustRun
         );
 
