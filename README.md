@@ -90,8 +90,9 @@ $ git-profile add
 
 [+] Enter profile title: Office
 
-[+] Enter Name:  John Doe
+[+] Enter Name: John Doe
 [+] Enter Email: johndoe@office.com
+[+] Enter Signingkey: B7156A83
 
 [OK] Profile "Office" saved successfully
 ```
@@ -111,14 +112,16 @@ $ git-profile show "Office"
 
 [+] Name:  John Doe
 [+] Email: johndoe@office.com
+[+] Signingkey: B7156A83
 ```
 
 ### Updating Profile
 ```
 $ git-profile update "Office"
 
-[+] Enter Name:  Jane Doe
+[+] Enter Name: Jane Doe
 [+] Enter Email: janedoe@gmail.com
+[+] Enter Signingkey: 547ABB1C
 
 [OK] Profile "Office" updated successfully
 ```
@@ -147,6 +150,7 @@ $ git-profile current
 [+] Current Profile "Office"
 [+] Name: John Doe
 [+] Email: johndoe@gmail.com
+[+] Signingkey: 547ABB1C
 ```
 
 *Side note* It should be noted that profiles are maintained globally. When you `use` some profile locally, what it does is get the configuration for that profile and sets it for the current project. i.e. when `use` is run locally it is equivalent to
@@ -154,6 +158,7 @@ $ git-profile current
 ```
 $ git config user.name "Name for specified profile"
 $ git config user.email "email-for-specified@profile.com"
+$ git config user.signingkey "SIGNINGKEY"
 ```
 
 ### Profiles List
