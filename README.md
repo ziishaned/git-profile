@@ -1,6 +1,7 @@
 <div align="center">
     <h1 align="center">git-profile</h1>
-    <p align="center">:octocat: Utility that helps you switch git configurations with ease</p>
+    <p align="center">Utility that helps you switch git configurations with ease</p>
+    <br/>
     <p align="center">
       <a href="https://travis-ci.org/ziishaned/git-profile">
           <img src="https://img.shields.io/travis/ziishaned/git-profile/master.svg?style=flat-square" alt="Build Status"/>
