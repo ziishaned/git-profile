@@ -17,9 +17,8 @@
             <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
         </a>
     </p>
+    <p align="center">:octocat: Utility that helps you switch git configurations with ease</p>
 </div>
-
-> :octocat: Utility that helps you switch git configurations with ease
 
 ## Preface
 
