@@ -1,8 +1,23 @@
-# git-profile
-
-[![Build Status](https://img.shields.io/travis/zeeshanu/git-profile/master.svg?style=flat-square)](https://travis-ci.org/zeeshanu/git-profile)
-[![Latest Version](https://img.shields.io/github/release/zeeshanu/git-profile.svg?style=flat-square)](https://github.com/zeeshanu/git-profile/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+<div align="center">
+    <h1 align="center">git-profile</h1>
+    <p align="center">
+      <a href="https://travis-ci.org/ziishaned/git-profile">
+          <img src="https://img.shields.io/travis/ziishaned/git-profile/master.svg?style=flat-square" alt="Build Status"/>
+      </a>
+      <a href="https://github.com/ziishaned/git-profile/releases">
+          <img src="https://img.shields.io/github/release/ziishaned/git-profile.svg?style=flat-square" alt="Latest Version"/>
+      </a>
+      <a href="https://twitter.com/home?status=git-profile%20by%20%40ziishaned%20http%3A//github.com/ziishaned/git-profile">
+        <img src="https://img.shields.io/badge/twitter-tweet-blue.svg?style=flat-square"/>
+      </a>
+      <a href="https://twitter.com/ziishaned">
+        <img src="https://img.shields.io/badge/feedback-@ziishaned-blue.svg?style=flat-square" />
+      </a>
+        <a href="https://github.com/ziishaned/git-profile">
+            <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
+        </a>
+    </p>
+</div>
 
 > :octocat: Utility that helps you switch git configurations with ease
 
@@ -53,7 +68,7 @@ export PATH=~/.composer/vendor/bin:$PATH
 
 #### Also you can use .phar file
 
-* Download the file from [here](https://github.com/zeeshanu/git-profile/releases/download/v1.0/git-profile)
+* Download the file from [here](https://github.com/ziishaned/git-profile/releases/download/v1.0/git-profile)
 * `sudo chmod -R 755 git-profile`
 * `sudo mv git-profile /usr/local/bin/git-profile`
 
@@ -174,4 +189,4 @@ Available profiles:
 
 ## License
 
-MIT © Zeeshan Ahmed
+MIT © Zeeshan Ahmad
